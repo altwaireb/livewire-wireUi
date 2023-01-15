@@ -3,70 +3,66 @@
 namespace App\Http\Livewire\Admin\Users;
 
 use App\Models\User;
-use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
-class UsersDelete extends Component
+class UsersRestore extends Component
 {
-
     use AuthorizesRequests;
     use Actions;
 
     public $itemId;
 
-    protected $listeners = ['openDeleteModel'];
+    protected $listeners = ['openRestoreModel'];
 
-    public function openDeleteModel($itemId) : void
+    public function openRestoreModel($itemId): void
     {
         $this->itemId = $itemId;
         $this->dialog()->confirm([
-            'title'       => __('user.delete question'),
-            'description' => __('user.delete description',['name' => $this->item->name]),
+            'title'       => __('user.restore question'),
+            'description' => __('user.restore description',['name' => $this->item->name]),
             'icon'        => 'warning',
             'accept'      => [
                 'label'  => __('app.yes ok'),
-                'method' => 'delete',
+                'method' => 'restore',
                 'params' => null,
             ],
             'reject' => [
                 'label'  => __('app.no cancel'),
-                'method' => 'closeDeleteModel',
+                'method' => 'closeRestoreModel',
             ],
         ]);
 
-
     }
 
-
-    public function delete()
-    {
-        $this->authorize('delete', $this->item);
-        $this->item->delete();
+    public function restore(){
+        $this->authorize('restore', $this->item);
+        $this->item->restore();
         $this->notification()->success(
-            $title = __('app.delete') . ' ' . __('user.user'),
-            $description = __('user.deleted user')
+            $title = __('app.restore') . ' ' . __('user.user'),
+            $description = __('user.restore user',['name'=> $this->item->name])
         );
         $this->reset();
         $this->emit('refreshParent');
+
     }
 
     public function getItemProperty()
     {
-        return User::find($this->itemId);
+        return User::onlyTrashed()->find($this->itemId);
     }
 
-    public function closeDeleteModel()
+    public function closeRestoreModel()
     {
         $this->reset();
         $this->notification()->error(
-            $title = __('app.undo the deletion'),
+            $title = __('app.undo the restore'),
         );
     }
 
-    public function render(): View
+    public function render()
     {
-        return view('livewire.admin.users.users-delete');
+        return view('livewire.admin.users.users-restore');
     }
 }

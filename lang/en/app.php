@@ -30,7 +30,7 @@ return [
     'All' => 'All',
     'show trashed' => 'Show Trashed',
     'no data' => 'No Data',
-    'yes delete' => 'Yes, delete it',
+    'yes ok' => 'Yes, Ok.',
     'no cancel' => 'No, cancel',
     'undo the deletion' => 'Undo the deletion'
 

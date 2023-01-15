@@ -30,8 +30,9 @@ return [
     'All' => 'جميع',
     'show trashed' => 'عرض المحذوف',
     'no data' => 'لا توجد بيانات',
-    'yes delete' => 'نعم، إحذف',
+    'yes ok' => 'نعم، تآكيد.',
     'no cancel' => 'لا، الغاء',
-    'undo the deletion' => 'تم الغاء الحذف'
+    'undo the deletion' => 'تم الغاء الحذف',
+    'undo the restore' => 'تم الغاء الإستعادة'
 
 ];

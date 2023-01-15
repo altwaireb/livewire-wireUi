@@ -145,7 +145,12 @@
                         <x-table.cell>
                             <div class="flex justify-center items-center gap-x-1">
                                 @if($trashed)
-
+                                    @can('restore',$item)
+                                        <x-button.circle
+                                                wire:click="$emit('openRestoreModel',{{$item->id}})"
+                                                icon="reply" primary flat
+                                        />
+                                    @endcan
 
                                 @else
                                     @can('update',$item)
@@ -189,4 +194,5 @@
     <livewire:admin.users.users-update :roles="$roles"/>
     <livewire:admin.users.users-show/>
     <livewire:admin.users.users-delete/>
+    <livewire:admin.users.users-restore/>
 </div>
