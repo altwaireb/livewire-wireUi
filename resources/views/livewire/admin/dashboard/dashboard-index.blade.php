@@ -2,7 +2,4 @@
    @section('page-title')
       {{ __('Dashboard') }}
    @endsection
-
-   
-
 </div>
