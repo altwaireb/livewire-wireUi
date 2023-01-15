@@ -49,7 +49,7 @@
 
             <div>
                 <label for="trashed"
-                       class="block text-sm font-medium text-gray-700 dark:text-gray-400 mb-2">
+                       class="block text-sm font-medium text-secondary-700 dark:text-secondary-400 mb-2">
                     {{ __('app.show trashed') }}
                 </label>
 

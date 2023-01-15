@@ -2,7 +2,7 @@
     <label for="{{ $id }}" class="flex items-center {{ $errors->has($name) ? 'text-negative-600':'' }}">
         <div class="relative flex items-start">
         @if ($leftLabel)
-            <div class="mr-2 text-sm text-right">
+            <div class="ltr:mr-2 rtl:ml-2 text-sm ltr:text-right rtl:text-left">
                 <x-dynamic-component
                     :component="WireUi::component('label')"
                     class=""
@@ -11,7 +11,7 @@
                     :has-error="$errors->has($name)"
                 />
                 @if($description)
-                    <div id="{{ $id }} . comments-description" class="text-gray-500">{{ $description }}</div>
+                    <div id="{{ $id }} . comments-description" class="text-secondary-500">{{ $description }}</div>
                 @endif
             </div>
         @endif
@@ -25,7 +25,7 @@
         </div>
 
         @if ($label)
-            <div class="ml-2 text-sm">
+            <div class="ltr:ml-2 rtl:mr-2 text-sm">
                 <x-dynamic-component
                     :component="WireUi::component('label')"
                     class=""
@@ -34,7 +34,7 @@
                     :has-error="$errors->has($name)"
                 />
                 @if($description)
-                    <div id="{{ $id }} . comments-description" class="text-gray-500">{{ $description }}</div>
+                    <div id="{{ $id }} . comments-description" class="text-secondary-500">{{ $description }}</div>
                 @endif
             </div>
         @endif

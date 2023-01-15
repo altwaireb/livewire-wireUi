@@ -61,7 +61,7 @@
                 <div class="col-span-2 md:col-span-4 lg:col-span-2 lg:row-span-2 order-last lg:order-none">
                     <div class="flex flex-row items-center justify-center">
                         <div class="relative mt-4">
-                            <div class="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-full">
+                            <div class="w-24 h-24 bg-secondary-200 dark:bg-secondary-700 rounded-full">
                                 @if(!empty($profilePhotoPath))
                                     <img src="{{ $profilePhotoPath->temporaryUrl() }}"
                                          class="object-cover w-24 h-24 rounded-full">

@@ -31,7 +31,7 @@
             x-on:input.debounce.150ms="onInput($event.target.value)"
             x-on:blur="emitInput">
             <x-slot name="append">
-                <div class="absolute inset-y-0 right-3 z-5 flex items-center justify-center">
+                <div class="absolute inset-y-0 ltr:right-3 rtl:left-3 z-5 flex items-center justify-center">
                     <div @class([
                         'flex items-center gap-x-2 my-auto',
                         'text-negative-400 dark:text-negative-600' => $name && $errors->has($name),
@@ -39,7 +39,7 @@
                     ])>
                         <x-dynamic-component
                             :component="WireUi::component('icon')"
-                            class="cursor-pointer w-4 h-4 hover:text-negative-500 transition-colors ease-in-out duration-150"
+                            class="cursor-pointer w-4 h-4 dark:text-secondary-500 hover:text-negative-500 transition-colors ease-in-out duration-150"
                             x-cloak
                             name="x"
                             x-show="!config.readonly && !config.disabled && input"
@@ -48,7 +48,7 @@
 
                         <x-dynamic-component
                             :component="WireUi::component('icon')"
-                            class="cursor-pointer w-5 h-5 text-gray-400 dark:text-gray-600"
+                            class="cursor-pointer w-5 h-5 text-secondary-400 dark:text-secondary-600"
                             name="clock"
                             x-show="!config.readonly && !config.disabled"
                             x-on:click="toggle"
@@ -80,7 +80,7 @@
         <ul class="mt-1 w-full h-64 sm:h-32 pb-1 pt-2 overflow-y-auto soft-scrollbar">
             <template x-for="time in filteredTimes">
                 <li class="group rounded-md focus:outline-none focus:bg-primary-100 hover:text-white
-                            hover:bg-primary-600 cursor-pointer select-none relative py-2 pl-2 pr-9
+                            hover:bg-primary-600 cursor-pointer select-none relative py-2 ltr:pl-2 ltr:pr-9 rtl:pr-2 rtl:pl-9
                             dark:hover:bg-secondary-700"
                     :class="{
                         'text-primary-600 dark:text-secondary-400':   input === time.value,
@@ -93,7 +93,7 @@
                     <span
                         class="
                             absolute text-primary-600 group-hover:text-white inset-y-0
-                            right-0 flex items-center pr-4 dark:text-secondary-400
+                            ltr:right-0 rtl:left-0 flex items-center ltr:pr-4 rtl:pl-4 dark:text-secondary-400
                         "
                         x-show="input === time.value">
                         <x-dynamic-component

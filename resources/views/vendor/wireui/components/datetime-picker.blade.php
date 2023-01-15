@@ -172,7 +172,7 @@
                                 :class="{
                                     'text-secondary-600 dark:text-secondary-400': !date.isDisabled && !date.isSelected && date.month === month,
                                     'text-secondary-400 dark:text-secondary-600': date.isDisabled || date.month !== month,
-                                    'text-primary-600 border border-primary-600 dark:border-gray-400': date.isToday && !date.isSelected,
+                                    'text-primary-600 border border-primary-600 dark:border-secondary-400': date.isToday && !date.isSelected,
                                     'disabled:text-primary-400 disabled:border-primary-400': date.isToday && !date.isSelected,
                                     '!text-white bg-primary-600 font-semibold border border-primary-600': date.isSelected,
                                     'disabled:bg-primary-400 disabled:border-primary-400': date.isSelected,

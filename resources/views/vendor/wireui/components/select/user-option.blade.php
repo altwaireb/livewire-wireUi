@@ -14,7 +14,7 @@
             {{ $label }}
 
             @if ($description)
-                <div class="text-xs text-gray-400">{{ $description }}</div>
+                <div class="text-xs text-secondary-400">{{ $description }}</div>
             @endif
         </span>
     </div>

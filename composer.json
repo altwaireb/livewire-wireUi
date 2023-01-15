@@ -11,7 +11,7 @@
         "laravel/jetstream": "^2.13",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5",
+        "livewire/livewire": "^2.10",
         "wireui/wireui": "^1.17"
     },
     "require-dev": {

@@ -28,7 +28,7 @@
 
     <div class="relative rounded-md @unless($shadowless) shadow-sm @endunless">
         @if ($prefix || $icon)
-            <div class="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none
+            <div class="absolute inset-y-0 ltr:left-0 rtl:right-0 ltr:pl-2.5 rtl:pr-2.5 flex items-center pointer-events-none
                 {{ $hasError ? 'text-negative-500' : 'text-secondary-400' }}">
                 @if ($icon)
                     <x-dynamic-component
@@ -37,7 +37,7 @@
                         class="h-5 w-5"
                     />
                 @elseif($prefix)
-                    <span class="pl-1 flex items-center self-center">
+                    <span class="ltr:pl-1 rtl:pr-1 flex items-center self-center">
                         {{ $prefix }}
                     </span>
                 @endif
@@ -54,7 +54,7 @@
         ]) }}>{{ $slot }}</textarea>
 
         @if ($suffix || $rightIcon || ($hasError && !$append))
-            <div class="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none
+            <div class="absolute inset-y-0 ltr:right-0 rtl:left-0 ltr:pr-2.5 rtl:pl-2.5 flex items-center pointer-events-none
                 {{ $hasError ? 'text-negative-500' : 'text-secondary-400' }}">
                 @if ($rightIcon)
                     <x-dynamic-component
@@ -63,7 +63,7 @@
                         class="h-5 w-5"
                     />
                 @elseif($suffix)
-                    <span class="pr-1 flex items-center justify-center">
+                    <span class="rtl:pr-1 rtl:pl-1 flex items-center justify-center">
                         {{ $suffix }}
                     </span>
                 @elseif($hasError)

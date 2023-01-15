@@ -11,7 +11,7 @@
                             :has-error="$errors->has($name)"
                         />
                         @if($description)
-                            <div class="text-gray-500">{{ $description }}</div>
+                            <div class="text-secondary-500">{{ $description }}</div>
                         @endif
                     </div>
                 @endif
@@ -34,7 +34,7 @@
                             :has-error="$errors->has($name)"
                         />
                         @if($description)
-                            <div id="{{ $id }} . comments-description" class="text-gray-500">{{ $description }}</div>
+                            <div id="{{ $id }} . comments-description" class="text-secondary-500">{{ $description }}</div>
                         @endif
                     </div>
                 @endif
