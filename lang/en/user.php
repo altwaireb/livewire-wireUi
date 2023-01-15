@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'user' => 'User',
+    'users' => 'Users',
+    'username' => 'Username',
+    'name' => 'Name',
+    'email' => 'Email',
+    'password' => 'Password',
+    'confirm password' => 'Confirm Password',
+    'country' => 'Country',
+    'city' => 'City',
+    'role' => 'Role',
+    'last_activity' => 'Last activity',
+    'profile_photo_url' => 'Photo',
+    'created user' => 'Create User :name Successfully',
+    'updated user' => 'Update User :name Successfully',
+    'deleted user' => 'Delete User Successfully',
+    'delete question' => 'Are you sure you want to delete?!',
+    'restore question' => 'Are you sure you want to restore?!',
+    'force delete question' => 'Are you sure you want to delete the User permanently?!',
+    'delete result' => 'This action will result in permanent deletion of User',
+    'restore user' => 'The User :USERNAME has been successfully restored',
+    'force delete user' => 'The user has been permanently deleted successfully',
+];

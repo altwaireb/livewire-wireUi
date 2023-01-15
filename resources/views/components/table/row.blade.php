@@ -1,0 +1,1 @@
+<tr {{ $attributes->merge(['class' => 'text-sm text-gray-700 dark:text-gray-400']) }} >{{ $slot }}</tr>
