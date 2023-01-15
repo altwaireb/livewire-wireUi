@@ -29,6 +29,12 @@ return [
     'Forgot your password' => 'Forgot your password ?',
     'All' => 'All',
     'show trashed' => 'Show Trashed',
-    'no data' => 'No Data'
+    'no data' => 'No Data',
+    'yes delete' => 'Yes, delete it',
+    'no cancel' => 'No, cancel',
+    'undo the deletion' => 'Undo the deletion'
+
+
+
 
 ];

@@ -4,7 +4,7 @@
 ])
 <div class="w-full">
     @if(isset($label))
-        <div class="px-4 py-0.5 w-40 ltr:text-left rtl:text-right rounded-t-md bg-secondary-300 dark:bg-secondary-400 text-secondary-700 dark:text-secondary-800">
+        <div class="px-2 py-0.5 w-32 ltr:text-left rtl:text-right rounded-t-md bg-secondary-300 dark:bg-secondary-400 text-secondary-700 dark:text-secondary-800">
             <span class="text-sm">{{ $label }}</span>
         </div>
     @endif

@@ -151,21 +151,22 @@
                                     @can('update',$item)
                                         <x-button.circle
                                                 wire:click="$emit('openUpdateModel',{{$item->id}})"
-                                                icon="pencil"
-                                                primary flat
+                                                icon="pencil" primary flat
                                         />
                                     @endcan
 
                                     @can('view',$item)
                                         <x-button.circle
                                                 wire:click="$emit('openShowModel',{{$item->id}})"
-                                                icon="eye"
-                                                primary flat
+                                                icon="eye" primary flat
                                         />
                                     @endcan
 
                                     @can('delete',$item)
-                                        <x-button.circle primary flat icon="trash"/>
+                                        <x-button.circle
+                                                wire:click="$emit('openDeleteModel',{{$item->id}})"
+                                                icon="trash" primary flat
+                                        />
                                     @endcan
                                 @endif
                             </div>
@@ -186,5 +187,6 @@
     </div>
     <livewire:admin.users.users-create :roles="$roles"/>
     <livewire:admin.users.users-update :roles="$roles"/>
-    <livewire:admin.users.users-show />
+    <livewire:admin.users.users-show/>
+    <livewire:admin.users.users-delete/>
 </div>

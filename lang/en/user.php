@@ -16,7 +16,7 @@ return [
     'created user' => 'Create User :name Successfully',
     'updated user' => 'Update User :name Successfully',
     'deleted user' => 'Delete User Successfully',
-    'delete question' => 'Are you sure you want to delete?!',
+    'delete question' => 'Are you sure you want to delete User :name ?!',
     'restore question' => 'Are you sure you want to restore?!',
     'force delete question' => 'Are you sure you want to delete the User permanently?!',
     'delete result' => 'This action will result in permanent deletion of User',

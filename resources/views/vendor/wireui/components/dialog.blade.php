@@ -59,7 +59,7 @@
                     <div x-ref="iconContainer"></div>
                 </div>
 
-                <div class="mt-4 w-full" :class="{ 'sm:mt-5': style === 'center' }">
+                <div class="mt-4 w-full px-2" :class="{ 'sm:mt-5': style === 'center' }">
                     <h3 class="text-lg leading-6 font-medium text-secondary-900 dark:text-secondary-400 text-center"
                         :class="{ 'ltr:sm:text-left rtl:sm:text-right': style === 'inline' }"
                         @unless($title) x-ref="title" @endunless>

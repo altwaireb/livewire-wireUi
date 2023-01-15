@@ -29,6 +29,9 @@ return [
     'select' => 'إختر',
     'All' => 'جميع',
     'show trashed' => 'عرض المحذوف',
-    'no data' => 'لا توجد بيانات'
+    'no data' => 'لا توجد بيانات',
+    'yes delete' => 'نعم، إحذف',
+    'no cancel' => 'لا، الغاء',
+    'undo the deletion' => 'تم الغاء الحذف'
 
 ];

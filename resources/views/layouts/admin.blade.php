@@ -26,11 +26,15 @@
         dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}"
         x-data="{ isSideMenuOpen : false }"
 >
+
 <x-notifications/>
+<x-dialog/>
+
 <div
         class="flex h-screen bg-secondary-50 dark:bg-secondary-900"
         :class="{ 'overflow-hidden': isSideMenuOpen }"
 >
+
     @include('assets.admin.sidebar.desktop-sidebar')
     @include('assets.admin.sidebar.mobile-sidebar')
 
@@ -40,9 +44,8 @@
         </header>
         <main class="h-full overflow-y-auto">
             <div class="container px-6 mx-auto grid">
-            @if (isset($header))
-
-                <!-- Page Heading -->
+                @if (isset($header))
+                    <!-- Page Heading -->
                     {{ $header }}
                 @endif
                 {{ $slot }}
