@@ -1,7 +1,6 @@
 <div class="space-y-6">
     @section('page-title', __('user.users'))
 
-
     <x-card cardClasses="my-6" title="{{ __('user.users') }}">
         <x-slot:action class="items-center justify-center">
             @can('create',\App\Models\User::class)
@@ -61,10 +60,11 @@
             </div>
 
             <div class="xl:col-start-8 xl:col-end-8 items-end justify-end">
-                <x-native-select
+                <x-select
                         label="{{ __('app.PerPage') }}"
                         :options="[10, 25, 50, 100]"
                         wire:model="perPage"
+                        :clearable="false"
                 />
             </div>
 
