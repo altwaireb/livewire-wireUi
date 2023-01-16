@@ -18,7 +18,7 @@ return [
     'deleted user' => 'Delete User Successfully',
     'delete question' => 'Are you sure you want to delete User :name ?!',
     'restore question' => 'Are you sure you want to restore?!',
-    'force delete question' => 'Are you sure you want to delete the User permanently?!',
+    'forceDelete question' => 'Are you sure you want to delete the User permanently?!',
     'delete result' => 'This action will result in permanent deletion of User',
     'restore user' => 'The User :USERNAME has been successfully restored',
     'force delete user' => 'The user has been permanently deleted successfully',

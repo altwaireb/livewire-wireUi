@@ -152,6 +152,13 @@
                                         />
                                     @endcan
 
+                                    @can('forceDelete',$item)
+                                        <x-button.circle
+                                                wire:click="$emit('openForceDeleteModel',{{$item->id}})"
+                                                icon="trash" negative flat
+                                        />
+                                    @endcan
+
                                 @else
                                     @can('update',$item)
                                         <x-button.circle
@@ -195,4 +202,5 @@
     <livewire:admin.users.users-show/>
     <livewire:admin.users.users-delete/>
     <livewire:admin.users.users-restore/>
+    <livewire:admin.users.users-force-delete/>
 </div>

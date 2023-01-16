@@ -8,6 +8,7 @@ return [
     'update' => 'Update',
     'show' => 'Show',
     'delete' => 'Delete',
+    'forceDelete' => 'Force Delete',
     'restore' => 'Restore',
     'hidden' => 'Hidden',
     'info' => 'Info',

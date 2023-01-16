@@ -8,6 +8,7 @@ return [
     'update' => 'تعديل',
     'show' => 'مشاهدة',
     'delete' => 'حذف',
+    'forceDelete' => 'حذف النهائي',
     'restore' => 'إستعادة',
     'hidden' => 'إخفاء',
     'info' => 'معلومات',
