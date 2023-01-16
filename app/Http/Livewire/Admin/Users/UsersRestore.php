@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Users;
 
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\View\View;
 use Livewire\Component;
 use WireUi\Traits\Actions;
 
@@ -20,28 +21,29 @@ class UsersRestore extends Component
     {
         $this->itemId = $itemId;
         $this->dialog()->confirm([
-            'title'       => __('user.restore question'),
-            'description' => __('user.restore description',['name' => $this->item->name]),
-            'icon'        => 'warning',
-            'accept'      => [
-                'label'  => __('app.yes ok'),
+            'title' => __('user.restore question'),
+            'description' => __('user.restore description', ['name' => $this->item->name]),
+            'icon' => 'warning',
+            'accept' => [
+                'label' => __('app.yes ok'),
                 'method' => 'restore',
                 'params' => null,
             ],
             'reject' => [
-                'label'  => __('app.no cancel'),
+                'label' => __('app.no cancel'),
                 'method' => 'closeRestoreModel',
             ],
         ]);
 
     }
 
-    public function restore(){
+    public function restore()
+    {
         $this->authorize('restore', $this->item);
         $this->item->restore();
         $this->notification()->success(
             $title = __('app.restore') . ' ' . __('user.user'),
-            $description = __('user.restore user',['name'=> $this->item->name])
+            $description = __('user.restore user', ['name' => $this->item->name])
         );
         $this->reset();
         $this->emit('refreshParent');
@@ -61,7 +63,7 @@ class UsersRestore extends Component
         );
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.admin.users.users-restore');
     }

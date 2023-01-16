@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Users;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
@@ -157,7 +158,7 @@ class UsersUpdate extends Component
         $this->resetErrorBag();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.admin.users.users-update');
     }

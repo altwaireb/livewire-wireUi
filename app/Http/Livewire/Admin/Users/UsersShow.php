@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Users;
 
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class UsersShow extends Component
@@ -29,7 +30,7 @@ class UsersShow extends Component
     }
 
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.admin.users.users-show');
     }
