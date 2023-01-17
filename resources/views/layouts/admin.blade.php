@@ -3,7 +3,6 @@
       x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system')}"
       x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
       x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}"
-
 >
 <head>
     <meta charset="utf-8">
@@ -42,7 +41,7 @@
         <header class="z-10 py-4 bg-white shadow-md dark:bg-secondary-800">
             @include('assets.admin.header.header')
         </header>
-        <main class="h-full overflow-y-auto">
+        <main class="h-full overflow-y-auto scroll-smooth">
             <div class="container px-6 mx-auto grid">
                 @if (isset($header))
                     <!-- Page Heading -->

@@ -166,4 +166,5 @@
         @endif
     </div>
     <livewire:admin.settings.settings-create :types="$types"/>
+    <livewire:admin.settings.settings-update :types="$types"/>
 </div>

@@ -34,6 +34,7 @@ return [
     'yes ok' => 'نعم، تآكيد.',
     'no cancel' => 'لا، الغاء',
     'undo the deletion' => 'تم الغاء الحذف',
-    'undo the restore' => 'تم الغاء الإستعادة'
+    'undo the restore' => 'تم الغاء الإستعادة',
+    'Click to upload' => 'اضغط هنا للتحميل',
 
 ];

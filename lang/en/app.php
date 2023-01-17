@@ -33,7 +33,8 @@ return [
     'no data' => 'No Data',
     'yes ok' => 'Yes, Ok.',
     'no cancel' => 'No, cancel',
-    'undo the deletion' => 'Undo the deletion'
+    'undo the deletion' => 'Undo the deletion',
+    'Click to upload' => 'Click to upload',
 
 
 

@@ -11,4 +11,8 @@
         background-position: left 0.5rem center;
         padding-right: 0.75rem;
     }
+
+    progress[value]::-webkit-progress-value {
+        background-color: rgb(147 51 234);
+    }
 }
