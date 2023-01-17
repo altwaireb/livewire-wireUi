@@ -168,4 +168,5 @@
     <livewire:admin.settings.settings-create :types="$types"/>
     <livewire:admin.settings.settings-update :types="$types"/>
     <livewire:admin.settings.settings-show/>
+    <livewire:admin.settings.settings-delete/>
 </div>
