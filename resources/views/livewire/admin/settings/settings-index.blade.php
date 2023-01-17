@@ -114,10 +114,10 @@
                         <x-table.cell class="text-center">
                             @if(!empty($item->value) && $item->type === 'image')
                                 <a href="{{ url('storage/'.$item->value) }}" target="_blank">
-                                    <img src="{{ url('storage/'.$item->value) }}" class="object-cover h-12">
+                                    <img src="{{ url('storage/'.$item->value) }}" class="h-8 object-cover object-center rounded">
                                 </a>
                             @elseif(!empty($item->value) && $item->type === 'file')
-                                <a href="{{ url('storage/'.$item->value) }}" target="_blank">show</a>
+                                <a href="{{ url('storage/'.$item->value) }}" target="_blank">{{ __('app.show') }}</a>
                             @else
                                 {{ $item->value }}
                             @endif
@@ -167,4 +167,5 @@
     </div>
     <livewire:admin.settings.settings-create :types="$types"/>
     <livewire:admin.settings.settings-update :types="$types"/>
+    <livewire:admin.settings.settings-show/>
 </div>
