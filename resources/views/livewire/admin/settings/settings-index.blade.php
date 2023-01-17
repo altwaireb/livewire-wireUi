@@ -119,7 +119,7 @@
                             @elseif(!empty($item->value) && $item->type === 'file')
                                 <a href="{{ url('storage/'.$item->value) }}" target="_blank">{{ __('app.show') }}</a>
                             @else
-                                {{ $item->value }}
+                                {{ $item->valueLimit }}
                             @endif
                         </x-table.cell>
                         <x-table.cell :value="$item->order" class="text-center"/>

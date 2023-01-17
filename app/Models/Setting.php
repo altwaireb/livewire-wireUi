@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 
 class Setting extends Model
@@ -12,7 +13,6 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = [ 'key', 'display_name', 'value', 'type', 'order'];
-
 
     public function scopeSearch($query, $term)
     {
@@ -158,6 +158,14 @@ class Setting extends Model
         static::deleted(function () {
             self::flushCache();
         });
+    }
+
+    public function getValueLimitAttribute(){
+        if ($this->type === 'text' or $this->type === 'textarea'){
+            return Str::words($this->value, 3, ' ...');
+        }else{
+            return $this->value;
+        }
     }
 
 }
