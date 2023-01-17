@@ -1,51 +1,117 @@
 <div class="space-y-6">
-    @section('page-title', __('Settings'))
-    {{--    <x-slot:header>--}}
+    @section('page-title', __('setting.settings'))
 
-    {{--    </x-slot:header>--}}
-
-    <x-card cardClasses="my-6" title="{{ __('Settings') }}">
-        <x-slot:action  class="items-center justify-center">
-            <x-button wire:click="create" icon="plus" primary label="Add Setting"/>
+    <x-card cardClasses="my-6" title="{{ __('setting.settings') }}">
+        <x-slot:action class="items-center justify-center">
+            @can('create',\App\Models\Setting::class)
+                <x-button
+                        wire:click="$emit('openCreateModel')"
+                        label="{{ __('app.create') .' '. __('setting.setting') }}"
+                        wire:loading.class="disabled"
+                        icon="plus" primary
+                />
+            @endcan
         </x-slot:action>
-        <div class="grid gap-x-3 mb-2 grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
-        style="color: #eb2581"
-        >
-            <x-input label="Search" wire:model="search" placeholder="Search ..."/>
-            <x-native-select
-                    label="PerPage"
-                    :options="[10, 25, 50, 100]"
-                    wire:model="perPage"
-            />
+
+        <div class="grid gap-x-3 mb-2 grid-cols-2 md:grid-cols-3 xl:grid-cols-8">
+            <div class="col-span-3">
+                <x-input
+                        wire:model="search"
+                        :label="__('app.search')"
+                        :placeholder="__('app.searchInput')"
+                        class="ltr:pl-12 rtl:pr-12"
+                >
+                    <x-slot name="prepend">
+                        <div class="absolute inset-y-0 ltr:left-0 rtl:right-0 flex items-center p-0.5">
+                            <x-button
+                                    wire:click="resetSearch"
+                                    {{ empty($search) ? 'disabled' : ''  }}
+                                    class="h-full ltr:rounded-l-md rtl:rounded-r-md"
+                                    icon="minus-circle" primary flat squared
+                            />
+                        </div>
+                    </x-slot>
+                </x-input>
+            </div>
+            <div class="col-span-2">
+                <x-select
+                        :label="__('setting.type')"
+                        :placeholder="__('app.select').' '.__('setting.type')"
+                        wire:model="typeSearch"
+                        :options="$types"
+                        :empty-message="__('wireui::messages.empty_options')"
+                />
+            </div>
+
+            <div class="xl:col-start-8 xl:col-end-8 items-end justify-end">
+                <x-select
+                        label="{{ __('app.PerPage') }}"
+                        :options="[10, 25, 50, 100]"
+                        wire:model="perPage"
+                        :clearable="false"
+                />
+            </div>
+
         </div>
     </x-card>
+
     <div class="w-full overflow-hidden rounded-lg">
         <div class="w-full overflow-x-auto shadow-xs">
             <x-table>
                 <x-slot:header>
                     <x-table.heading
                             sortable
-                            value="ID"
+                            value="#"
                             wire:click="sortBy('id')"
+                            class="px-2 py-3"
                             :direction="$sortBy === 'id' ? $sortDirection : null"
                     />
-                    <x-table.heading sortable wire:click="sortBy('key')" :direction="$sortBy === 'key' ? $sortDirection : null" class="ltr:text-left rtl:text-right">Key</x-table.heading>
-                    <x-table.heading sortable wire:click="sortBy('display_name')" :direction="$sortBy === 'display_name' ? $sortDirection : null">Display Name</x-table.heading>
-                    <x-table.heading sortable wire:click="sortBy('type')" :direction="$sortBy === 'type' ? $sortDirection : null">Type</x-table.heading>
-                    <x-table.heading value="Value" />
-                    <x-table.heading sortable wire:click="sortBy('order')" :direction="$sortBy === 'order' ? $sortDirection : null">Order</x-table.heading>
                     <x-table.heading
-                            value="Actions"
+                            sortable
+                            :value="__('setting.key')"
+                            wire:click="sortBy('key')"
+                            :direction="$sortBy === 'key' ? $sortDirection : null"
+                            class="ltr:text-left rtl:text-right"
+                    />
+                    <x-table.heading
+                            sortable
+                            :value="__('setting.display_name')"
+                            wire:click="sortBy('display_name')"
+                            :direction="$sortBy === 'display_name' ? $sortDirection : null"
+                    />
+                    <x-table.heading
+                            sortable
+                            :value="__('setting.type')"
+                            wire:click="sortBy('type')"
+                            :direction="$sortBy === 'type' ? $sortDirection : null"
+                    />
+                    <x-table.heading
+                            :value="__('setting.value')"
+                    />
+                    <x-table.heading
+                            sortable
+                            :value="__('setting.order')"
+                            wire:click="sortBy('order')"
+                            :direction="$sortBy === 'order' ? $sortDirection : null"
+                    />
+                    <x-table.heading
+                            sortable
+                            :value="__('app.created_at')"
+                            wire:click="sortBy('created_at')"
+                            :direction="$sortBy === 'created_at' ? $sortDirection : null"
+                    />
+                    <x-table.heading
+                            :value="__('app.actions')"
                             class="px-4 py-3 w-16"
                     />
                 </x-slot:header>
                 @forelse($items as $item)
-                    <tr class="text-sm text-center text-gray-700 dark:text-gray-400">
-                        <td class="px-2 py-3">{{ $item->id }}</td>
-                        <td class="px-4 py-3">{{ $item->key }}</td>
-                        <td class="px-4 py-3">{{ $item->display_name }}</td>
-                        <td class="px-4 py-3">{{ $item->type }}</td>
-                        <td class="px-4 py-3">
+                    <x-table.row wire:key="items-{{ $item->id }}">
+                        <x-table.cell :value="$item->id" class="px-2 py-3 text-center"/>
+                        <x-table.cell :value="$item->key" />
+                        <x-table.cell :value="$item->display_name" class="text-center" />
+                        <x-table.cell :value="$item->type" class="text-center" />
+                        <x-table.cell class="text-center">
                             @if(!empty($item->value) && $item->type === 'image')
                                 <a href="{{ url('storage/'.$item->value) }}" target="_blank">
                                     <img src="{{ url('storage/'.$item->value) }}" class="object-cover h-12">
@@ -55,25 +121,49 @@
                             @else
                                 {{ $item->value }}
                             @endif
-                        </td>
-                        <td class="px-4 py-3">{{ $item->order }}</td>
-                        <td class="px-4 py-3">
+                        </x-table.cell>
+                        <x-table.cell :value="$item->order" class="text-center"/>
+                        <x-table.cell
+                                :value="date('Y-m-d H:i', strtotime($item->created_at))"
+                                class="text-center text-xs"
+                        />
+                        <x-table.cell>
                             <div class="flex justify-center items-center gap-x-1">
-                                <x-button.circle wire:click="edit({{$item->id}})" primary flat icon="pencil"/>
-                                <x-button.circle primary flat icon="eye"/>
-                                <x-button.circle primary flat icon="trash"/>
+                                @can('update',$item)
+                                    <x-button.circle
+                                            wire:click="$emit('openUpdateModel',{{$item->id}})"
+                                            icon="pencil" primary flat
+                                    />
+                                @endcan
+
+                                @can('view',$item)
+                                    <x-button.circle
+                                            wire:click="$emit('openShowModel',{{$item->id}})"
+                                            icon="eye" primary flat
+                                    />
+                                @endcan
+
+                                @can('delete',$item)
+                                    <x-button.circle
+                                            wire:click="$emit('openDeleteModel',{{$item->id}})"
+                                            icon="trash" primary flat
+                                    />
+                                @endcan
                             </div>
-                        </td>
-                    </tr>
+                        </x-table.cell>
+                    </x-table.row>
                 @empty
+                    <x-table.row class="text-center">
+                        <x-table.cell :value="__('app.no data')" colspan="8"/>
+                    </x-table.row>
                 @endforelse
             </x-table>
         </div>
         @if(!empty($items))
             <div class="px-4 py-3 border-t dark:border-secondary-700 bg-white divide-y dark:divide-secondary-700 dark:bg-secondary-800">
-                {{ $items->links() }}
+                {!! $items->links() !!}
             </div>
         @endif
     </div>
-    <livewire:admin.settings.settings-create />
+    <livewire:admin.settings.settings-create :types="$types"/>
 </div>

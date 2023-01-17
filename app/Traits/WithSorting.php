@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Traits;
-
 
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\WithPagination;
@@ -26,7 +24,7 @@ trait WithSorting
         ];
     }
 
-    public function sortBy($field)
+    public function sortBy($field): void
     {
         $this->sortDirection = $this->sortBy === $field
             ? $this->reverseSort()
@@ -35,13 +33,12 @@ trait WithSorting
         $this->sortBy = $field;
     }
 
-    public function reverseSort()
+    public function reverseSort(): string
     {
         return $this->sortDirection === 'asc'
             ? 'desc'
             : 'asc';
     }
-
 
     public function orderAndPaginate(Builder $query)
     {
@@ -53,20 +50,19 @@ trait WithSorting
             ->paginate($this->perPage);
     }
 
-    public function updatingPerPage()
+    public function updatingPerPage(): void
     {
         $this->resetPage();
     }
 
-    public function updatingSearch()
+    public function updatingSearch(): void
     {
         $this->resetPage();
     }
 
-    public function resetSearch()
+    public function resetSearch(): void
     {
         $this->reset('search');
     }
-
 
 }

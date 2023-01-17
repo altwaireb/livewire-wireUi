@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Settings;
 use App\Models\Setting;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use WireUi\Traits\Actions;
@@ -14,35 +15,67 @@ class SettingsCreate extends Component
     use WithFileUploads;
     use Actions;
 
-    public bool $showCreateModel = false;
+    public bool $openCreateModel = false;
     public ?string $key = null;
     public ?string $display_name = null;
     public $value;
     public string $type = 'file';
     public int $order = 1;
 
-    public array $types = ['text', 'textarea', 'image', 'file'];
+    public array $types = [];
 
-    protected $listeners = ['showCreateModel'];
 
-    public function updatingType()
+    protected $listeners = ['openCreateModel'];
+
+    public function mount($types)
     {
-        $this->value = null;
+        $this->types = $types;
     }
 
-    public function resetValue()
+    public function openCreateModel()
     {
-        $this->value = null;
+        $this->openCreateModel = true;
+        $this->order = Setting::orderBy('order', 'DESC')->first()->order + 1 ?? 1;
     }
+
 
     protected function rules()
     {
         return [
-            'key' => ['required', 'string', 'min:2', 'max:50','regex:/^([a-z])+?(-|_)?([a-z])+$/i', 'unique:settings'],
-            'display_name' => ['required', 'string', 'min:2', 'max:50', 'unique:settings'],
-            'value' => ['required','string','min:1' ,'max:255'],
-            'type' => ['required', 'string', 'min:2', 'max:50', Rule::in($this->types)],
-            'order' => ['required', 'integer', 'min:1', 'max:100'],
+            'key' => [
+                'required',
+                'string',
+                'min:2',
+                'max:50',
+                'regex:/^([a-z])+?(-|_)?([a-z])+$/i',
+                'unique:settings'
+            ],
+            'display_name' => [
+                'required',
+                'string',
+                'min:2',
+                'max:50',
+                'unique:settings'
+            ],
+            'value' => [
+                'required',
+                'string',
+                'min:1',
+                'max:255'
+            ],
+            'type' => [
+                'required',
+                'string',
+                'min:2',
+                'max:50',
+                Rule::in($this->types)
+            ],
+            'order' => [
+                'required',
+                'integer',
+                'min:1',
+                'max:100'
+            ]
         ];
     }
 
@@ -67,10 +100,9 @@ class SettingsCreate extends Component
         }
     }
 
-    public function showCreateModel()
+    public function updatingType()
     {
-        $this->showCreateModel = true;
-        $this->order = Setting::orderBy('order', 'DESC')->first()->order + 1 ?? 1;
+        $this->value = null;
     }
 
     public function create()
@@ -86,29 +118,28 @@ class SettingsCreate extends Component
         if (!empty($this->value) and $this->type === 'image' or $this->type === 'file') {
             $url = $this->value->store('settings', 'public');
             $data['value'] = $url;
-        }else{
+        } else {
             $data['value'] = $this->value;
         }
-//        dd($this->value);
+
         Setting::create($data);
         $this->closeCreateModel();
         $this->notification()->success(
-            $title = 'Setting saved',
-            $description = 'Setting was successfully saved'
+            $title = __('app.create') . ' ' . __('setting.setting'),
+            $description = __('setting.created setting', ['name' => $data['name']])
         );
-
+        $this->emit('refreshParent');
     }
 
     public function closeCreateModel()
     {
-        $this->showCreateModel = false;
+        $this->openCreateModel = false;
         $this->resetExcept('types');
         $this->resetValidation();
         $this->resetErrorBag();
     }
 
-
-    public function render()
+    public function render(): View
     {
         return view('livewire.admin.settings.settings-create');
     }
