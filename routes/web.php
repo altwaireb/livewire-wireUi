@@ -20,14 +20,15 @@ Route::get('/', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
+    'last_user_activity'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
 
-Route::middleware(['auth:sanctum','admin'])->prefix('admin')->as('admin.')->group(function () {
+Route::middleware(['auth:sanctum','admin','last_user_activity'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('/',\App\Http\Livewire\Admin\Dashboard\DashboardIndex::class)->name('index');
     Route::get('/users',\App\Http\Livewire\Admin\Users\UsersIndex::class)->name('users.index');
     Route::get('/settings',\App\Http\Livewire\Admin\Settings\SettingsIndex::class)->name('settings.index');
