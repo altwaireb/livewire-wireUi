@@ -1,6 +1,23 @@
-<x-list-sidebar title="Dashboard" routeName="admin.index" icon="home" />
-<x-list-sidebar title="Users" routeName="admin.users.index" icon="user-group" />
-<x-list-sidebar title="Settings" routeName="admin.settings.index" icon="cog" />
+<x-list-sidebar
+        :title="__('app.admin index')"
+        routeName="admin.index"
+        icon="home"
+/>
+<x-list-sidebar
+        :title="__('user.users')"
+        routeName="admin.users.index"
+        icon="user-group"
+/>
+<x-list-sidebar
+        :title="__('role.roles')"
+        routeName="admin.roles.index"
+        icon="adjustments"
+/>
+<x-list-sidebar
+        :title="__('setting.settings')"
+        routeName="admin.settings.index"
+        icon="cog"
+/>
 <li class="relative px-6 py-3" x-data="{ isPagesMenuOpen : false }">
     <button
             class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-secondary-800 dark:hover:text-secondary-200"

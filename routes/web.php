@@ -32,4 +32,5 @@ Route::middleware(['auth:sanctum','admin','last_user_activity'])->prefix('admin'
     Route::get('/',\App\Http\Livewire\Admin\Dashboard\DashboardIndex::class)->name('index');
     Route::get('/users',\App\Http\Livewire\Admin\Users\UsersIndex::class)->name('users.index');
     Route::get('/settings',\App\Http\Livewire\Admin\Settings\SettingsIndex::class)->name('settings.index');
+    Route::get('/roles',\App\Http\Livewire\Admin\Roles\RolesIndex::class)->name('roles.index');
 });
