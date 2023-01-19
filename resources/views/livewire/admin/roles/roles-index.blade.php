@@ -39,12 +39,15 @@
                         :label="__('app.search by').' '.__('roles.permission')"
                         :placeholder="__('app.select').' '.__('roles.permission')"
                         wire:model="permissionSearch"
-                        :options="$permissions->toArray()"
-                        option-label="name"
-                        option-value="id"
-                        option-description="table_name"
                         :empty-message="__('wireui::messages.empty_options')"
-                />
+                >
+                    @foreach($permissions as $permission)
+                        <x-select.option
+                                label="{{ !empty($permission->table_name) ? __(''.$permission->table_name.'.'.$permission->name.'')  :  __('app.'.$permission->name.'') }}"
+                                :value="$permission->id"
+                        />
+                    @endforeach
+                </x-select>
             </div>
 
             <div class="xl:col-start-8 xl:col-end-8 items-end justify-end">
@@ -121,23 +124,23 @@
                 @forelse($items as $item)
                     <x-table.row wire:key="items-{{ $item->id }}">
                         <x-table.cell :value="$item->id" class="px-2 py-3 text-center"/>
-                        <x-table.cell :value="$item->name" />
-                        <x-table.cell :value="$item->key" class="text-center" />
-                        <x-table.cell class="text-center" >
+                        <x-table.cell :value="$item->name"/>
+                        <x-table.cell :value="$item->key" class="text-center"/>
+                        <x-table.cell class="text-center">
                             <x-badge-role-user
                                     :color="$item->color"
                                     :label="$item->name"
                             />
                         </x-table.cell>
-                        <x-table.cell class="text-center" >
+                        <x-table.cell class="text-center">
                             @if($item->default)
                                 {{ __('app.true') }}
                             @else
                                 {{ __('app.false') }}
                             @endif
                         </x-table.cell>
-                        <x-table.cell :value="$item->users_count" class="text-center" />
-                        <x-table.cell :value="$item->permissions_count" class="text-center" />
+                        <x-table.cell :value="$item->users_count" class="text-center"/>
+                        <x-table.cell :value="$item->permissions_count" class="text-center"/>
                         <x-table.cell
                                 :value="date('Y-m-d H:i', strtotime($item->created_at))"
                                 class="text-center text-xs"
