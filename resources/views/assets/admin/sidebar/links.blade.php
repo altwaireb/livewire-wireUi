@@ -4,17 +4,17 @@
         icon="home"
 />
 <x-list-sidebar
-        :title="__('user.users')"
+        :title="__('users.users')"
         routeName="admin.users.index"
         icon="user-group"
 />
 <x-list-sidebar
-        :title="__('role.roles')"
+        :title="__('roles.roles')"
         routeName="admin.roles.index"
         icon="adjustments"
 />
 <x-list-sidebar
-        :title="__('setting.settings')"
+        :title="__('settings.settings')"
         routeName="admin.settings.index"
         icon="cog"
 />
