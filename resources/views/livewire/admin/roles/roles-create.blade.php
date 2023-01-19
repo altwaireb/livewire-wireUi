@@ -5,7 +5,7 @@
             blur
             hideClose
     >
-        <form wire:submit.prevent="create" class="accent-pink-900" autocomplete="off">
+        <form wire:submit.prevent="create" autocomplete="off">
             <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
                 <div class="col-span-1 md:col-span-3">
                     <x-input

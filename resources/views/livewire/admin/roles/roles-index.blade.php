@@ -182,4 +182,5 @@
     </div>
 
     <livewire:admin.roles.roles-create :permissions="$permissions"/>
+    <livewire:admin.roles.roles-update :permissions="$permissions"/>
 </div>
