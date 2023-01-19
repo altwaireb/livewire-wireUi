@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('key')->unique()->index();
             $table->string('color')->nullable();
+            $table->boolean('default')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

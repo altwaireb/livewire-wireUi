@@ -11,6 +11,15 @@ return [
     'country' => 'Country',
     'city' => 'City',
     'role' => 'Role',
+
+    'viewAny users' => 'View any Users',
+    'view users' => 'View Users',
+    'update users' => 'Update Users',
+    'create users' => 'Create Users',
+    'delete users' => 'delete Users',
+    'restore users' => 'Restore Users',
+    'force delete users' => 'Force Delete Users',
+
     'last_activity' => 'Last activity',
     'profile_photo_url' => 'Photo',
     'created user' => 'Create User :name Successfully',
@@ -25,4 +34,5 @@ return [
     'forceDelete description' => 'This action causes the User :name to be permanently deleted. Do you want to delete it?!',
     'delete result' => 'This action will result in permanent deletion of User',
     'forceDeleted user' => 'The User has been permanently deleted successfully',
+
 ];

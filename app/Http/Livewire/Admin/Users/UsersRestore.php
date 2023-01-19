@@ -21,8 +21,8 @@ class UsersRestore extends Component
     {
         $this->itemId = $itemId;
         $this->dialog()->confirm([
-            'title' => __('user.restore question'),
-            'description' => __('user.restore description', ['name' => $this->item->name]),
+            'title' => __('users.restore question'),
+            'description' => __('users.restore description', ['name' => $this->item->name]),
             'icon' => 'warning',
             'accept' => [
                 'label' => __('app.yes ok'),
@@ -42,7 +42,7 @@ class UsersRestore extends Component
         $this->authorize('restore', $this->item);
         $this->item->restore();
         $this->notification()->success(
-            $title = __('app.restore') . ' ' . __('user.user'),
+            $title = __('app.restore') . ' ' . __('users.user'),
             $description = __('user.restore user', ['name' => $this->item->name])
         );
         $this->reset();

@@ -8,6 +8,15 @@ return [
     'type' => 'Type',
     'order' => 'Order',
     'value' => 'Value',
+
+    'viewAny settings' => 'View any Settings',
+    'view settings' => 'View Settings',
+    'update settings' => 'Update Settings',
+    'create settings' => 'Create Settings',
+    'delete settings' => 'delete Settings',
+    'restore settings' => 'Restore Settings',
+    'force delete settings' => 'Force Delete Settings',
+
     'created setting' => 'Create Setting :name Successfully',
     'updated setting' => 'Update Setting :name Successfully',
     'deleted setting' => 'Delete Setting Successfully',

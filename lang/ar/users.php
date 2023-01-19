@@ -13,6 +13,15 @@ return [
     'role' => 'الدور',
     'profile_photo_url' => 'الصورة',
     'last_activity' => 'أخر ظهور',
+
+    'viewAny users' => 'مشاهدة كل الأعضاء',
+    'view users' => 'مشاهدة الأعضاء',
+    'update users' => 'تعديل الأعضاء',
+    'create users' => 'إضافة الأعضاء',
+    'delete users' => 'حذف الأعضاء',
+    'restore users' => 'إستعادة الأعضاء',
+    'force delete users' => 'الحذف النهائي للأعضاء',
+
     'created user' => 'تم إضافة العضو :name بنجاح',
     'updated user' => 'تم تعديل العضو :name بنجاح',
     'deleted user' => 'تم حذف العضو بنجاح',

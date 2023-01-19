@@ -22,8 +22,8 @@ class UsersDelete extends Component
     {
         $this->itemId = $itemId;
         $this->dialog()->confirm([
-            'title'       => __('user.delete question'),
-            'description' => __('user.delete description',['name' => $this->item->name]),
+            'title'       => __('users.delete question'),
+            'description' => __('users.delete description',['name' => $this->item->name]),
             'icon'        => 'warning',
             'accept'      => [
                 'label'  => __('app.yes ok'),
@@ -45,8 +45,8 @@ class UsersDelete extends Component
         $this->authorize('delete', $this->item);
         $this->item->delete();
         $this->notification()->success(
-            $title = __('app.delete') . ' ' . __('user.user'),
-            $description = __('user.deleted user')
+            $title = __('app.delete') . ' ' . __('users.user'),
+            $description = __('users.deleted user')
         );
         $this->reset();
         $this->emit('refreshParent');

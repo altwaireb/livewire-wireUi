@@ -143,8 +143,8 @@ class UsersUpdate extends Component
         $this->user->update($data);
         $this->closeUpdateModel();
         $this->notification()->success(
-            $title = __('app.update') . ' ' . __('user.user'),
-            $description = __('user.updated user', ['name' => $data['name']])
+            $title = __('app.update') . ' ' . __('users.user'),
+            $description = __('users.updated user', ['name' => $data['name']])
         );
         $this->emit('refreshParent');
 

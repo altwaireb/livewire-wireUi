@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Settings;
 
 use App\Models\Setting;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -124,7 +125,7 @@ class SettingsUpdate extends Component
         $this->authorize('update', $this->setting);
 
         $data = [
-            'key' => $this->key,
+            'key' => Str::slug($this->key),
             'display_name' => $this->display_name,
             'type' => $this->type,
             'order' => $this->order,

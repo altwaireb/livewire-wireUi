@@ -16,19 +16,19 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         Permission::firstOrCreate([
-            'name'      => 'Browse admin',
+            'name'      => 'browse admin',
             'key'       => 'browse_admin',
             'table_name' => null,
         ]);
 
         Permission::firstOrCreate([
-            'name'      => 'Administrator',
+            'name'      => 'administrator',
             'key'       => 'administrator',
             'table_name' => null,
         ]);
 
         Permission::firstOrCreate([
-            'name'      => 'Banned',
+            'name'      => 'banned',
             'key'       => 'banned',
             'table_name' => null,
         ]);

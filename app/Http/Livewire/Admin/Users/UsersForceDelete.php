@@ -21,8 +21,8 @@ class UsersForceDelete extends Component
     {
         $this->itemId = $itemId;
         $this->dialog()->confirm([
-            'title' => __('user.forceDelete question'),
-            'description' => __('user.forceDelete description', ['name' => $this->item->name]),
+            'title' => __('users.forceDelete question'),
+            'description' => __('users.forceDelete description', ['name' => $this->item->name]),
             'icon' => 'warning',
             'accept' => [
                 'label' => __('app.yes ok'),
@@ -41,7 +41,7 @@ class UsersForceDelete extends Component
         $this->authorize('forceDelete', $this->item);
         $this->item->forceDelete();
         $this->notification()->success(
-            $title = __('app.forceDelete') . ' ' . __('user.user'),
+            $title = __('app.forceDelete') . ' ' . __('users.user'),
             $description = __('user.forceDeleted user')
         );
         $this->reset();

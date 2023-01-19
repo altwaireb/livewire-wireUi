@@ -1,7 +1,7 @@
 <div>
     @if($openShowModel)
         <x-modal.card
-                title="{{ __('app.show') }} {{ __('user.user') }}"
+                title="{{ __('app.show') }} {{ __('users.user') }}"
                 wire:model.defer="openShowModel"
                 blur
                 hideClose
@@ -11,13 +11,13 @@
 
                 <div class="col-span-1 md:col-span-2">
                     <x-item-with-label
-                            :label="__('user.username')"
+                            :label="__('users.username')"
                             :value="$item->username"
                     />
                 </div>
                 <div class="col-span-1 md:col-span-3">
                     <x-item-with-label
-                            :label="__('user.name')"
+                            :label="__('users.name')"
                             :value="$item->name"
                     />
                 </div>
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="col-span-1 md:col-span-2">
-                    <x-item-with-label :label="__('user.role')">
+                    <x-item-with-label :label="__('users.role')">
                         <x-badge-role-user
                                 :color="$item->role->color"
                                 :label="$item->role->name"
@@ -36,14 +36,14 @@
                 </div>
                 <div class="col-span-1 md:col-span-3">
                     <x-item-with-label
-                            :label="__('user.email')"
+                            :label="__('users.email')"
                             :value="$item->email"
                     />
                 </div>
                 @if(!empty($item->last_activity))
                     <div class="col-span-1 md:col-span-2">
                         <x-item-with-label
-                                :label="__('user.last_activity')"
+                                :label="__('users.last_activity')"
                                 :value="$item->last_activity"
                         />
                     </div>

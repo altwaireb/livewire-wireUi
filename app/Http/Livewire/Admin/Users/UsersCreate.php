@@ -121,8 +121,8 @@ class UsersCreate extends Component
         User::create($data);
         $this->closeCreateModel();
         $this->notification()->success(
-            $title = __('app.create') . ' ' . __('user.user'),
-            $description = __('user.created user', ['name' => $data['name']])
+            $title = __('app.create') . ' ' . __('users.user'),
+            $description = __('users.created user', ['name' => $data['name']])
         );
         $this->emit('refreshParent');
 

@@ -1,12 +1,12 @@
 <div class="space-y-6">
-    @section('page-title', __('user.users'))
+    @section('page-title', __('users.users'))
 
-    <x-card cardClasses="my-6" title="{{ __('user.users') }}">
+    <x-card cardClasses="my-6" title="{{ __('users.users') }}">
         <x-slot:action class="items-center justify-center">
             @can('create',\App\Models\User::class)
                 <x-button
                         wire:click="$emit('openCreateModel')"
-                        label="{{ __('app.create') .' '. __('user.user') }}"
+                        label="{{ __('app.create') .' '. __('users.user') }}"
                         wire:loading.class="disabled"
                         icon="plus" primary
                 />
@@ -36,8 +36,8 @@
 
             <div class="col-span-2">
                 <x-select
-                        :label="__('user.role')"
-                        :placeholder="__('app.select').' '.__('user.role')"
+                        :label="__('app.search by').' '.__('users.role')"
+                        :placeholder="__('app.select').' '.__('users.role')"
                         :options="$roles"
                         wire:model="roleSearch"
                         option-label="name"
@@ -54,7 +54,6 @@
 
                 <x-checkbox
                         id="trashed"
-                        class="checked:bg-primary-600 dark:checked:bg-primary-600"
                         wire:model="trashed" lg
                 />
             </div>
@@ -84,26 +83,26 @@
                     />
                     <x-table.heading
                             sortable
-                            :value="__('user.name').' / '.__('user.username')"
+                            :value="__('users.name').' / '.__('users.username')"
                             wire:click="sortBy('username')"
                             :direction="$sortBy === 'username' ? $sortDirection : null"
                             class="ltr:text-left rtl:text-right"
                     />
                     <x-table.heading
                             sortable
-                            :value="__('user.email')"
+                            :value="__('users.email')"
                             wire:click="sortBy('email')"
                             :direction="$sortBy === 'email' ? $sortDirection : null"
                     />
                     <x-table.heading
                             sortable
-                            :value="__('user.role')"
+                            :value="__('users.role')"
                             wire:click="sortBy('role_id')"
                             :direction="$sortBy === 'role_id' ? $sortDirection : null"
                     />
                     <x-table.heading
                             sortable
-                            :value="__('user.last_activity')"
+                            :value="__('users.last_activity')"
                             wire:click="sortBy('last_activity')"
                             :direction="$sortBy === 'last_activity' ? $sortDirection : null"
                     />

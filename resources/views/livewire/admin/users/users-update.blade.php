@@ -1,6 +1,6 @@
 <div>
     <x-modal.card
-            title="{{ __('app.update') }} {{ __('user.user') }}"
+            title="{{ __('app.update') }} {{ __('users.user') }}"
             wire:model.defer="openUpdateModel"
             blur
             hideClose
@@ -11,28 +11,28 @@
                 <x-input
                         wire:model.defer="username"
                         type="text"
-                        label="{{ __('user.username') }}"
-                        placeholder="{{ __('user.username') }}"
+                        label="{{ __('users.username') }}"
+                        placeholder="{{ __('users.username') }}"
                         id="usernameUpdate"
                 />
                 <x-input
                         wire:model.defer="name"
                         type="text"
-                        label="{{ __('user.name') }}"
-                        placeholder="{{ __('user.name') }}"
+                        label="{{ __('users.name') }}"
+                        placeholder="{{ __('users.name') }}"
                         id="nameUpdate"
                 />
                 <x-input
                         wire:model.defer="email"
                         type="email"
-                        label="{{ __('user.email') }}"
+                        label="{{ __('users.email') }}"
                         placeholder="example@mail.com"
                         id="emailUpdate"
                 />
 
                 <x-select
-                        :label="__('user.role')"
-                        :placeholder="__('app.select').' '.__('user.role')"
+                        :label="__('users.role')"
+                        :placeholder="__('app.select').' '.__('users.role')"
                         :options="$roles"
                         wire:model.defer="role_id"
                         id="roleUpdate"
@@ -44,13 +44,13 @@
 
                 <x-inputs.password
                         wire:model.defer="password"
-                        label="{{ __('user.password') }}"
+                        label="{{ __('users.password') }}"
                         id="passwordUpdate"
                 />
                 <x-input
                         wire:model.defer="password_confirmation"
                         type="password"
-                        label="{{ __('user.confirm password') }}"
+                        label="{{ __('users.confirm password') }}"
                         required
                         autocomplete="new-password"
                         id="password_confirmation_Update"

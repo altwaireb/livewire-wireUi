@@ -1,12 +1,12 @@
 <div class="space-y-6">
-    @section('page-title', __('role.roles'))
+    @section('page-title', __('roles.roles'))
 
-    <x-card cardClasses="my-6" title="{{ __('role.roles') }}">
+    <x-card cardClasses="my-6" title="{{ __('roles.roles') }}">
         <x-slot:action class="items-center justify-center">
             @can('create',\App\Models\Role::class)
                 <x-button
                         wire:click="$emit('openCreateModel')"
-                        label="{{ __('app.create') .' '. __('role.role') }}"
+                        label="{{ __('app.create') .' '. __('roles.role') }}"
                         wire:loading.class="disabled"
                         icon="plus" primary
                 />
@@ -34,6 +34,19 @@
                 </x-input>
             </div>
 
+            <div class="col-span-2">
+                <x-select
+                        :label="__('app.search by').' '.__('roles.permission')"
+                        :placeholder="__('app.select').' '.__('roles.permission')"
+                        wire:model="permissionSearch"
+                        :options="$permissions->toArray()"
+                        option-label="name"
+                        option-value="id"
+                        option-description="table_name"
+                        :empty-message="__('wireui::messages.empty_options')"
+                />
+            </div>
+
             <div class="xl:col-start-8 xl:col-end-8 items-end justify-end">
                 <x-select
                         label="{{ __('app.PerPage') }}"
@@ -59,22 +72,40 @@
                     />
                     <x-table.heading
                             sortable
-                            :value="__('role.name')"
+                            :value="__('roles.name')"
                             wire:click="sortBy('name')"
                             :direction="$sortBy === 'name' ? $sortDirection : null"
                             class="ltr:text-left rtl:text-right"
                     />
                     <x-table.heading
                             sortable
-                            :value="__('role.key')"
+                            :value="__('roles.key')"
                             wire:click="sortBy('key')"
                             :direction="$sortBy === 'key' ? $sortDirection : null"
                     />
                     <x-table.heading
                             sortable
-                            :value="__('role.color')"
+                            :value="__('roles.color')"
                             wire:click="sortBy('color')"
                             :direction="$sortBy === 'color' ? $sortDirection : null"
+                    />
+                    <x-table.heading
+                            sortable
+                            :value="__('roles.default')"
+                            wire:click="sortBy('default')"
+                            :direction="$sortBy === 'default' ? $sortDirection : null"
+                    />
+                    <x-table.heading
+                            sortable
+                            :value="__('roles.users_count')"
+                            wire:click="sortBy('users_count')"
+                            :direction="$sortBy === 'users_count' ? $sortDirection : null"
+                    />
+                    <x-table.heading
+                            sortable
+                            :value="__('roles.permissions_count')"
+                            wire:click="sortBy('permissions_count')"
+                            :direction="$sortBy === 'permissions_count' ? $sortDirection : null"
                     />
                     <x-table.heading
                             sortable
@@ -98,6 +129,15 @@
                                     :label="$item->name"
                             />
                         </x-table.cell>
+                        <x-table.cell class="text-center" >
+                            @if($item->default)
+                                {{ __('app.true') }}
+                            @else
+                                {{ __('app.false') }}
+                            @endif
+                        </x-table.cell>
+                        <x-table.cell :value="$item->users_count" class="text-center" />
+                        <x-table.cell :value="$item->permissions_count" class="text-center" />
                         <x-table.cell
                                 :value="date('Y-m-d H:i', strtotime($item->created_at))"
                                 class="text-center text-xs"
@@ -141,4 +181,5 @@
         @endif
     </div>
 
+    <livewire:admin.roles.roles-create :permissions="$permissions"/>
 </div>

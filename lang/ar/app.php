@@ -36,5 +36,16 @@ return [
     'undo the deletion' => 'تم الغاء الحذف',
     'undo the restore' => 'تم الغاء الإستعادة',
     'Click to upload' => 'اضغط هنا للتحميل',
+    'preview' => 'معاينة',
+    'search by' => 'بحث حسب',
+    'general' => 'عام',
+    'true' => 'نعم',
+    'false' => 'لا',
+
+    'browse admin' => 'دخول لوحة التحكم',
+    'administrator' => 'مدير عام',
+    'banned' => 'محجوب',
+
+
 
 ];

@@ -8,6 +8,15 @@ return [
     'type' => 'النوع',
     'order' => 'الترتيب',
     'value' => 'القيمة',
+
+    'viewAny settings' => 'مشاهدة كل الإعدادات',
+    'view settings' => 'مشاهدة الإعدادات',
+    'update settings' => 'تعديل الإعدادات',
+    'create settings' => 'إضافة الإعدادات',
+    'delete settings' => 'حذف الإعدادات',
+    'restore settings' => 'إستعادة الإعدادات',
+    'force delete settings' => 'الحذف النهائي للإعدادات',
+
     'created setting' => 'تم إضافة الإعداد :name بنجاح',
     'updated setting' => 'تم تعديل الإعداد :name بنجاح',
     'deleted setting' => 'تم حذف الإعداد بنجاح',

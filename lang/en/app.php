@@ -35,8 +35,15 @@ return [
     'no cancel' => 'No, cancel',
     'undo the deletion' => 'Undo the deletion',
     'Click to upload' => 'Click to upload',
+    'preview' => 'Preview',
+    'search by' => 'Search By',
+    'general' => 'General',
+    'true' => 'True',
+    'false' => 'False',
 
-
+    'browse admin' => 'Browse Admin',
+    'administrator' => 'Administrator',
+    'banned' => 'Banned',
 
 
 ];

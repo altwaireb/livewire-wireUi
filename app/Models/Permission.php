@@ -33,13 +33,13 @@ class Permission extends Model
 
     public static function generateFor($table_name)
     {
-        self::firstOrCreate(['name' => 'Browse ' . $table_name, 'key' => 'browse_' . $table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['name' => 'View ' . $table_name, 'key' => 'view_' . $table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['name' => 'Update ' . $table_name, 'key' => 'update_' . $table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['name' => 'Create ' . $table_name, 'key' => 'create_' . $table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['name' => 'Delete ' . $table_name, 'key' => 'delete_' . $table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['name' => 'Restore ' . $table_name, 'key' => 'restore_' . $table_name, 'table_name' => $table_name]);
-        self::firstOrCreate(['name' => 'Force Delete ' . $table_name, 'key' => 'forceDelete_' . $table_name, 'table_name' => $table_name]);
+        self::firstOrCreate(['name' => 'viewAny ' . $table_name, 'key' => 'viewAny_' . $table_name, 'table_name' => $table_name]);
+        self::firstOrCreate(['name' => 'view ' . $table_name, 'key' => 'view_' . $table_name, 'table_name' => $table_name]);
+        self::firstOrCreate(['name' => 'update ' . $table_name, 'key' => 'update_' . $table_name, 'table_name' => $table_name]);
+        self::firstOrCreate(['name' => 'create ' . $table_name, 'key' => 'create_' . $table_name, 'table_name' => $table_name]);
+        self::firstOrCreate(['name' => 'delete ' . $table_name, 'key' => 'delete_' . $table_name, 'table_name' => $table_name]);
+        self::firstOrCreate(['name' => 'restore ' . $table_name, 'key' => 'restore_' . $table_name, 'table_name' => $table_name]);
+        self::firstOrCreate(['name' => 'force delete ' . $table_name, 'key' => 'forceDelete_' . $table_name, 'table_name' => $table_name]);
     }
 
     /**

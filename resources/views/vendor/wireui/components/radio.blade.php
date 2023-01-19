@@ -21,6 +21,8 @@
                     $getClasses($errors->has($name)),
                 ])->merge([
                     'type'  => 'radio',
+                    'class' => 'checked:bg-primary-600 dark:checked:bg-primary-600',
+
                 ]) }} />
         </div>
 
