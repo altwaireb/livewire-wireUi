@@ -217,4 +217,5 @@
     <livewire:admin.roles.roles-update :permissions="$permissions"/>
     <livewire:admin.roles.roles-delete/>
     <livewire:admin.roles.roles-restore/>
+    <livewire:admin.roles.roles-force-delete/>
 </div>

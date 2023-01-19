@@ -35,7 +35,10 @@ class Role extends Model
      */
     public function hasPermission($key)
     {
-        return $this->permissions()->where('key', $key)->exists();
+        if (! $this->permissions) {
+            return false;
+        }
+        return $this->permissions()->where('key',$key)->exists();
     }
 
     public function scopeSearch($query, $term)

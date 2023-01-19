@@ -69,7 +69,7 @@ class RolePolicy
      */
     public function delete(User $user, Role $role)
     {
-        return $user->hasPermission('delete_roles');
+        return $user->hasPermission('delete_roles') and !$role->hasPermission('administrator');
 
     }
 
