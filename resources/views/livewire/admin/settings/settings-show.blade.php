@@ -1,7 +1,7 @@
 <div>
     @if($openShowModel)
         <x-modal.card
-                title="{{ __('app.show') }} {{ __('setting.setting') }}"
+                title="{{ __('app.show') }} {{ __('settings.setting') }}"
                 wire:model.defer="openShowModel"
                 blur
                 hideClose
@@ -11,30 +11,30 @@
 
                 <div class="col-span-1 md:col-span-3">
                     <x-item-with-label
-                            :label="__('setting.key')"
+                            :label="__('settings.key')"
                             :value="$item->key"
                     />
                 </div>
                 <div class="col-span-1 md:col-span-3">
                     <x-item-with-label
-                            :label="__('setting.display_name')"
+                            :label="__('settings.display_name')"
                             :value="$item->display_name"
                     />
                 </div>
                 <div class="col-span-1 md:col-span-3">
                     <x-item-with-label
-                            :label="__('setting.type')"
+                            :label="__('settings.type')"
                             :value="$item->type"
                     />
                 </div>
                 <div class="col-span-1 md:col-span-3">
                     <x-item-with-label
-                            :label="__('setting.order')"
+                            :label="__('settings.order')"
                             :value="$item->order"
                     />
                 </div>
                 <div class="col-span-2 md:col-span-6">
-                    <x-item-with-label class="items-center" :label="__('setting.value')">
+                    <x-item-with-label class="items-center" :label="__('settings.value')">
                         @if(!empty($item->value))
                             @if($item->type === 'image')
                                 <div class="items-center">

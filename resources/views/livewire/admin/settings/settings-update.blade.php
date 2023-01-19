@@ -1,6 +1,6 @@
 <div>
     <x-modal.card
-            title="{{ __('app.update') }} {{ __('setting.setting') }}"
+            title="{{ __('app.update') }} {{ __('settings.setting') }}"
             wire:model.defer="openUpdateModel"
             blur
             hideClose
@@ -9,19 +9,19 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <x-input
                         wire:model="key"
-                        label="{{ __('setting.key') }}"
-                        placeholder="{{ __('setting.key') }}"
+                        label="{{ __('settings.key') }}"
+                        placeholder="{{ __('settings.key') }}"
                         type="text"
                 />
                 <x-input
                         wire:model="display_name"
-                        label="{{ __('setting.display_name') }}"
-                        placeholder="{{ __('setting.display_name') }}"
+                        label="{{ __('settings.display_name') }}"
+                        placeholder="{{ __('settings.display_name') }}"
                         type="text"
                 />
                 <x-select
-                        label="{{ __('setting.type') }}"
-                        placeholder="{{ __('setting.type') }}"
+                        label="{{ __('settings.type') }}"
+                        placeholder="{{ __('settings.type') }}"
                         wire:model="type"
                         :options="$types"
                         :clearable="false"
@@ -29,7 +29,7 @@
                 </x-select>
                 <x-inputs.number
                         wire:model="order"
-                        label="{{ __('setting.order') }}"
+                        label="{{ __('settings.order') }}"
                         min="1"
                         max="200"
                 />
@@ -37,15 +37,15 @@
                     @if($type === 'text')
                         <x-input
                                 wire:model="value"
-                                label="{{ __('setting.value') }}"
-                                placeholder="{{ __('setting.value') }}"
+                                label="{{ __('settings.value') }}"
+                                placeholder="{{ __('settings.value') }}"
                                 type="text"
                         />
                     @elseif($type === 'textarea')
                         <x-textarea
                                 wire:model="value"
-                                label="{{ __('setting.value') }}"
-                                placeholder="{{ __('setting.value') }}"
+                                label="{{ __('settings.value') }}"
+                                placeholder="{{ __('settings.value') }}"
                         />
                     @elseif($type === 'image')
                         <div

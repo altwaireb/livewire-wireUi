@@ -141,8 +141,8 @@ class SettingsUpdate extends Component
         $this->setting->update($data);
         $this->closeUpdateModel();
         $this->notification()->success(
-            $title = __('app.update') . ' ' . __('setting.setting'),
-            $description = __('setting.updated setting', ['name' => $data['key']])
+            $title = __('app.update') . ' ' . __('settings.setting'),
+            $description = __('settings.updated setting', ['name' => $data['key']])
         );
         $this->emit('refreshParent');
 

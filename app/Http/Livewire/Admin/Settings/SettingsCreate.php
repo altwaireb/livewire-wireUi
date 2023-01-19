@@ -130,8 +130,8 @@ class SettingsCreate extends Component
         Setting::create($data);
         $this->closeCreateModel();
         $this->notification()->success(
-            $title = __('app.create') . ' ' . __('setting.setting'),
-            $description = __('setting.created setting', ['name' => $data['key']])
+            $title = __('app.create') . ' ' . __('settings.setting'),
+            $description = __('settings.created setting', ['name' => $data['key']])
         );
         $this->emit('refreshParent');
     }

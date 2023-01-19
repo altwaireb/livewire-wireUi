@@ -20,8 +20,8 @@ class SettingsDelete extends Component
     {
         $this->itemId = $itemId;
         $this->dialog()->confirm([
-            'title'       => __('setting.delete question'),
-            'description' => __('setting.delete description',['name' => $this->item->key]),
+            'title'       => __('settings.delete question'),
+            'description' => __('settings.delete description',['name' => $this->item->key]),
             'icon'        => 'warning',
             'accept'      => [
                 'label'  => __('app.yes ok'),
@@ -43,8 +43,8 @@ class SettingsDelete extends Component
         $this->authorize('delete', $this->item);
         $this->item->delete();
         $this->notification()->success(
-            $title = __('app.delete') . ' ' . __('setting.setting'),
-            $description = __('setting.deleted setting')
+            $title = __('app.delete') . ' ' . __('settings.setting'),
+            $description = __('settings.deleted setting')
         );
         $this->reset();
         $this->emit('refreshParent');

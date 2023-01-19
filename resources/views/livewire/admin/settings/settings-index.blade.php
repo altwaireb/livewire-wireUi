@@ -1,12 +1,12 @@
 <div class="space-y-6">
-    @section('page-title', __('setting.settings'))
+    @section('page-title', __('settings.settings'))
 
-    <x-card cardClasses="my-6" title="{{ __('setting.settings') }}">
+    <x-card cardClasses="my-6" title="{{ __('settings.settings') }}">
         <x-slot:action class="items-center justify-center">
             @can('create',\App\Models\Setting::class)
                 <x-button
                         wire:click="$emit('openCreateModel')"
-                        label="{{ __('app.create') .' '. __('setting.setting') }}"
+                        label="{{ __('app.create') .' '. __('settings.setting') }}"
                         wire:loading.class="disabled"
                         icon="plus" primary
                 />
@@ -35,8 +35,8 @@
             </div>
             <div class="col-span-2">
                 <x-select
-                        :label="__('setting.type')"
-                        :placeholder="__('app.select').' '.__('setting.type')"
+                        :label="__('settings.type')"
+                        :placeholder="__('app.select').' '.__('settings.type')"
                         wire:model="typeSearch"
                         :options="$types"
                         :empty-message="__('wireui::messages.empty_options')"
@@ -68,29 +68,29 @@
                     />
                     <x-table.heading
                             sortable
-                            :value="__('setting.key')"
+                            :value="__('settings.key')"
                             wire:click="sortBy('key')"
                             :direction="$sortBy === 'key' ? $sortDirection : null"
                             class="ltr:text-left rtl:text-right"
                     />
                     <x-table.heading
                             sortable
-                            :value="__('setting.display_name')"
+                            :value="__('settings.display_name')"
                             wire:click="sortBy('display_name')"
                             :direction="$sortBy === 'display_name' ? $sortDirection : null"
                     />
                     <x-table.heading
                             sortable
-                            :value="__('setting.type')"
+                            :value="__('settings.type')"
                             wire:click="sortBy('type')"
                             :direction="$sortBy === 'type' ? $sortDirection : null"
                     />
                     <x-table.heading
-                            :value="__('setting.value')"
+                            :value="__('settings.value')"
                     />
                     <x-table.heading
                             sortable
-                            :value="__('setting.order')"
+                            :value="__('settings.order')"
                             wire:click="sortBy('order')"
                             :direction="$sortBy === 'order' ? $sortDirection : null"
                     />
