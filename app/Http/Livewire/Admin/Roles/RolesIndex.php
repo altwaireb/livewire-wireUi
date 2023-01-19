@@ -13,9 +13,15 @@ class RolesIndex extends Component
 {
     use WithSorting;
 
-    public $permissionSearch;
+    public bool $trashed = false;
+    public int|null $permissionSearch = null;
 
     protected $listeners = ['refreshParent' => '$refresh'];
+
+    public function updatingTrashed()
+    {
+        $this->resetPage();
+    }
 
     public function updatingPermissionsSearch(){
         $this->resetPage();
@@ -24,7 +30,12 @@ class RolesIndex extends Component
     public function getRolesProperty()
     {
         $items = Role::query();
-        $items = $items->withCount('users','permissions');
+        // * Trashed
+        if ($this->trashed) {
+            $items = $items->onlyTrashed()->withCount('users','permissions');
+        }else{
+            $items = $items->withCount('users','permissions');
+        }
 
         if ($this->permissionSearch){
             $items = $items->whereHas('permissions' ,function (Builder $query){

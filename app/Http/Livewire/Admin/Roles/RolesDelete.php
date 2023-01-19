@@ -22,7 +22,12 @@ class RolesDelete extends Component
         $this->itemId = $itemId;
         $this->dialog()->confirm([
             'title'       => __('roles.delete question'),
-            'description' => __('roles.delete description',['name' => $this->item->name]),
+            'description' => __('roles.delete description',
+                [
+                    'name' => $this->item->name,
+                    'count' => $this->item->users_count,
+                ]
+            ),
             'icon'        => 'warning',
             'accept'      => [
                 'label'  => __('app.yes ok'),
@@ -42,6 +47,7 @@ class RolesDelete extends Component
     public function delete()
     {
         $this->authorize('delete', $this->item);
+        $this->item->users()->delete();
         $this->item->delete();
         $this->notification()->success(
             $title = __('app.delete') . ' ' . __('roles.role'),
@@ -53,7 +59,7 @@ class RolesDelete extends Component
 
     public function getItemProperty()
     {
-        return Role::find($this->itemId);
+        return Role::withCount('users')->find($this->itemId);
     }
 
     public function closeDeleteModel()

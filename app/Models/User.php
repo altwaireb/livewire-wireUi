@@ -73,19 +73,16 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Role::class)->withTrashed();
     }
 
-    /**
-     * Check if User has Permission
-     *
-     * @param $key
-     * @return bool
-     */
 
     public function hasPermission($key)
     {
-        return $this->role->permissions()->where('key', $key)->exists();
+        if (! $this->role) {
+            return false;
+        }
+        return $this->role->permissions()->where('key',$key)->exists();
     }
 
     public function scopeSearch($query, $term)

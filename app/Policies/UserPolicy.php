@@ -29,14 +29,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return $user->hasPermission('view_users') and
-            (
-                !$model->hasPermission('administrator')
-                or
-                $user->id === $model->id
-                or
-                $user->id === 1
-            );
+        return $user->hasPermission('view_users');
 
     }
 

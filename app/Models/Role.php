@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Role extends Model
@@ -21,12 +19,12 @@ class Role extends Model
         'default' => 'boolean',
     ];
 
-    public function users(): HasMany
+    public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class)->withTrashed();
     }
 
-    public function permissions(): BelongsToMany
+    public function permissions()
     {
         return $this->belongsToMany(Permission::class);
     }
@@ -34,10 +32,8 @@ class Role extends Model
     /**
      * Check if Role has Permission
      *
-     * @param $key
-     * @return bool
      */
-    public function hasPermission($key): bool
+    public function hasPermission($key)
     {
         return $this->permissions()->where('key', $key)->exists();
     }

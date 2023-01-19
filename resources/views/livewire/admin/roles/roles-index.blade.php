@@ -50,6 +50,18 @@
                 </x-select>
             </div>
 
+            <div>
+                <label for="trashed"
+                       class="block text-sm font-medium text-secondary-700 dark:text-secondary-400 mb-2">
+                    {{ __('app.show trashed') }}
+                </label>
+
+                <x-checkbox
+                        id="trashed"
+                        wire:model="trashed" lg
+                />
+            </div>
+
             <div class="xl:col-start-8 xl:col-end-8 items-end justify-end">
                 <x-select
                         label="{{ __('app.PerPage') }}"
@@ -147,32 +159,49 @@
                         />
                         <x-table.cell>
                             <div class="flex justify-center items-center gap-x-1">
-                                @can('update',$item)
-                                    <x-button.circle
-                                            wire:click="$emit('openUpdateModel',{{$item->id}})"
-                                            icon="pencil" primary flat
-                                    />
-                                @endcan
+                                @if($trashed)
+                                    @can('restore',$item)
+                                        <x-button.circle
+                                                wire:click="$emit('openRestoreModel',{{$item->id}})"
+                                                icon="reply" primary flat
+                                        />
+                                    @endcan
 
-                                @can('view',$item)
-                                    <x-button.circle
-                                            wire:click="$emit('openShowModel',{{$item->id}})"
-                                            icon="eye" primary flat
-                                    />
-                                @endcan
+                                    @can('forceDelete',$item)
+                                        <x-button.circle
+                                                wire:click="$emit('openForceDeleteModel',{{$item->id}})"
+                                                icon="trash" negative flat
+                                        />
+                                    @endcan
 
-                                @can('delete',$item)
-                                    <x-button.circle
-                                            wire:click="$emit('openDeleteModel',{{$item->id}})"
-                                            icon="trash" primary flat
-                                    />
-                                @endcan
+                                @else
+                                    @can('update',$item)
+                                        <x-button.circle
+                                                wire:click="$emit('openUpdateModel',{{$item->id}})"
+                                                icon="pencil" primary flat
+                                        />
+                                    @endcan
+
+                                    @can('view',$item)
+                                        <x-button.circle
+                                                wire:click="$emit('openShowModel',{{$item->id}})"
+                                                icon="eye" primary flat
+                                        />
+                                    @endcan
+
+                                    @can('delete',$item)
+                                        <x-button.circle
+                                                wire:click="$emit('openDeleteModel',{{$item->id}})"
+                                                icon="trash" primary flat
+                                        />
+                                    @endcan
+                                @endif
                             </div>
                         </x-table.cell>
                     </x-table.row>
                 @empty
                     <x-table.row class="text-center">
-                        <x-table.cell :value="__('app.no data')" colspan="8"/>
+                        <x-table.cell :value="__('app.no data')" colspan="9"/>
                     </x-table.row>
                 @endforelse
             </x-table>
@@ -187,4 +216,5 @@
     <livewire:admin.roles.roles-create :permissions="$permissions"/>
     <livewire:admin.roles.roles-update :permissions="$permissions"/>
     <livewire:admin.roles.roles-delete/>
+    <livewire:admin.roles.roles-restore/>
 </div>

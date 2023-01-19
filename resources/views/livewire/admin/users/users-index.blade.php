@@ -131,10 +131,12 @@
                         </x-table.cell>
                         <x-table.cell :value="$item->email" class="text-center"/>
                         <x-table.cell class="text-center text-xs">
-                            <x-badge-role-user
-                                    :color="$item->role?->color"
-                                    :label="$item->role?->name"
-                            />
+                            @if($item->role)
+                                <x-badge-role-user
+                                        :color="$item->role?->color"
+                                        :label="$item->role?->name"
+                                />
+                            @endif
                         </x-table.cell>
                         <x-table.cell :value="$item->lastActivityForHumans" class="text-center text-xs"/>
                         <x-table.cell

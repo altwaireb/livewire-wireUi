@@ -30,10 +30,11 @@ class UsersIndex extends Component
     public function getUsersProperty()
     {
         $items = User::query();
-        $items = $items->with('role:id,name,key,color');
         // * Trashed
         if ($this->trashed) {
-            $items = $items->onlyTrashed();
+            $items = $items->onlyTrashed()->with('role:id,name,key,color');
+        }else{
+            $items = $items->with('role:id,name,key,color');
         }
         if (!empty($this->roleSearch)) {
             $items = $items->where('role_id', $this->roleSearch);
