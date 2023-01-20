@@ -41,6 +41,7 @@ return [
     'general' => 'عام',
     'true' => 'نعم',
     'false' => 'لا',
+    'Already registered' => '',
 
     'browse admin' => 'دخول لوحة التحكم',
     'administrator' => 'مدير عام',
