@@ -21,7 +21,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        $input['role_id'] = Role::default();
+        $input['role_id'] = Role::getDefaultBy('id');
 
         Validator::make($input, [
             'username' => [

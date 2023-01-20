@@ -51,16 +51,25 @@ class Role extends Model
     }
 
     /**
-     * Get ID Role if column default
+     * Get Role if column default
      * value is True
      */
     public static function default()
     {
         $data = self::where('default',1)->first();
         if (!empty($data)){
-            return $data->id;
+            return $data;
         }
         return null;
+    }
+
+    /**
+     * Get Column ID Role if column default true
+     * value is True
+     */
+    public static function getDefaultBy($column = 'id'){
+
+        return self::default() != null ? self::default()->$column : null;
     }
 
 }
