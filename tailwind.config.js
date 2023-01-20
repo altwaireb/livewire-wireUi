@@ -16,6 +16,7 @@ module.exports = {
         './vendor/wireui/wireui/src/View/**/*.php'
     ],
 
+    darkMode: 'class',
     theme: {
         extend: {
             fontFamily: {
