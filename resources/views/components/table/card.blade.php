@@ -8,7 +8,7 @@ if (isset($active)){
 }
 @endphp
 
-<div class="flex items-center text-sm">
+<div {{ $attributes->merge(['class' => 'flex items-center text-sm']) }}>
     @if(isset($image))
         <div class="relative hidden w-8 h-8 ltr:mr-3 rtl:ml-3 rounded-full md:block">
             <img class="object-cover w-full h-full rounded-full"

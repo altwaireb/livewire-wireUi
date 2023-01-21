@@ -1,5 +1,5 @@
 <x-list-sidebar
-        :title="__('app.admin index')"
+        :title="__('app.dashboard')"
         routeName="admin.index"
         icon="home"
 />
@@ -14,10 +14,16 @@
         icon="adjustments"
 />
 <x-list-sidebar
+        :title="__('permissions.permissions')"
+        routeName="admin.permissions.index"
+        icon="arrows-expand"
+/>
+<x-list-sidebar
         :title="__('settings.settings')"
         routeName="admin.settings.index"
         icon="cog"
 />
+
 <li class="relative px-6 py-3" x-data="{ isPagesMenuOpen : false }">
     <button
             class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-secondary-800 dark:hover:text-secondary-200"

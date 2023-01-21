@@ -28,9 +28,26 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::middleware(['auth:sanctum','admin','last_user_activity'])->prefix('admin')->as('admin.')->group(function () {
-    Route::get('/',\App\Http\Livewire\Admin\Dashboard\DashboardIndex::class)->name('index');
-    Route::get('/users',\App\Http\Livewire\Admin\Users\UsersIndex::class)->name('users.index');
-    Route::get('/settings',\App\Http\Livewire\Admin\Settings\SettingsIndex::class)->name('settings.index');
-    Route::get('/roles',\App\Http\Livewire\Admin\Roles\RolesIndex::class)->name('roles.index');
+Route::middleware(['auth:sanctum', 'admin', 'last_user_activity'])
+    ->prefix('admin')->as('admin.')->group(function () {
+
+    Route::get('/',\App\Http\Livewire\Admin\Dashboard\DashboardIndex::class)
+        ->name('index');
+
+    Route::get('/users',\App\Http\Livewire\Admin\Users\UsersIndex::class)
+        ->name('users.index')
+        ->can('viewAny',\App\Models\User::class);
+
+    Route::get('/settings',\App\Http\Livewire\Admin\Settings\SettingsIndex::class)
+        ->name('settings.index')
+        ->can('viewAny', \App\Models\Setting::class);
+
+    Route::get('/roles',\App\Http\Livewire\Admin\Roles\RolesIndex::class)
+        ->name('roles.index')
+        ->can('viewAny', \App\Models\Role::class);
+
+    Route::get('/permissions',\App\Http\Livewire\Admin\Permissions\PermissionsIndex::class)
+        ->name('permissions.index')
+        ->can('viewAny', \App\Models\Permission::class);
+
 });

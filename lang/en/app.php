@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin index' => 'Admin Index',
+    'dashboard' => 'Dashboard',
     'id' => 'Id',
     'actions' => 'Actions',
     'create' => 'Create',

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'admin index' => 'لوحة التحكم',
+    'dashboard' => 'لوحة التحكم',
     'id' => 'المعرف',
     'actions' => 'الإجراءات',
     'create' => 'إضافة',
