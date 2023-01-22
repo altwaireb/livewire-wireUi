@@ -65,7 +65,7 @@ class RolesDelete extends Component
     public function closeDeleteModel()
     {
         $this->reset();
-        $this->notification()->error(
+        $this->notification()->success(
             $title = __('app.undo the deletion'),
         );
     }

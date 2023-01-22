@@ -56,7 +56,7 @@ class UsersForceDelete extends Component
     public function closeForceDeleteModel()
     {
         $this->reset();
-        $this->notification()->error(
+        $this->notification()->success(
             $title = __('app.undo the deletion'),
         );
     }

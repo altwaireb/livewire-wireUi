@@ -58,7 +58,7 @@ class UsersRestore extends Component
     public function closeRestoreModel()
     {
         $this->reset();
-        $this->notification()->error(
+        $this->notification()->success(
             $title = __('app.undo the restore'),
         );
     }
