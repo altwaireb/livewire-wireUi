@@ -25,7 +25,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $role = Role::where('key','user')->first()->id;
+        $role = Role::getDefaultBy('id');
 
         return [
             'username' => $this->faker->unique()->userName(),
