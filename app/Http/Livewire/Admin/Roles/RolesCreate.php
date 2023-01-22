@@ -12,7 +12,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class RolesCreate extends Component
 {
-    use WithFileUploads;
     use AuthorizesRequests;
     use Actions;
 

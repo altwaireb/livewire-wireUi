@@ -13,7 +13,6 @@ use WireUi\Traits\Actions;
 class RolesUpdate extends Component
 {
 
-    use WithFileUploads;
     use AuthorizesRequests;
     use Actions;
 
