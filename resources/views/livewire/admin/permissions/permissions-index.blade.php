@@ -171,4 +171,5 @@
         @endif
     </div>
 
+    <livewire:admin.permissions.permissions-create/>
 </div>
