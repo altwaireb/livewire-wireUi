@@ -18,7 +18,7 @@ class SettingSeeder extends Seeder
         Setting::firstOrCreate([
             'key' => 'site_title',
             'display_name' => 'Site Title',
-            'value' => 'LaravelWireUi',
+            'value' => 'Laravel WireUi',
             'type' => 'text',
             'order' => 1
         ]);
@@ -26,7 +26,7 @@ class SettingSeeder extends Seeder
         Setting::firstOrCreate([
             'key' => 'site_description',
             'display_name' => 'Site Description',
-            'value' => 'LaravelWireUi Description',
+            'value' => 'Laravel WireUi Description',
             'type' => 'text',
             'order' => 2
         ]);

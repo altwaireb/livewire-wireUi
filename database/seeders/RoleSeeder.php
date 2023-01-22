@@ -58,9 +58,16 @@ class RoleSeeder extends Seeder
             'default' => 0
         ]);
 
+        // Add Permissions to Role Administrator
         $permission_administrator = Permission::where('key','!=','banned')->pluck('id')->toArray();
 
         $admin_role = Role::where('key','administrator')->first();
         $admin_role->permissions()->sync($permission_administrator);
+
+        // Add Permissions to Role Banned
+        $permission_banned = Permission::where('key','banned')->pluck('id')->toArray();
+        $banned_role = Role::where('key','banned')->first();
+        $banned_role->permissions()->sync($permission_banned);
+
     }
 }
