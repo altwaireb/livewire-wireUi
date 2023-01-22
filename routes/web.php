@@ -21,14 +21,15 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-    'last_user_activity'
+    'last_user_activity',
+    'check_banned'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 });
 
-Route::middleware(['auth:sanctum', 'admin', 'last_user_activity'])
+Route::middleware(['auth:sanctum', 'admin', 'last_user_activity','check_banned'])
     ->prefix('admin')->as('admin.')->group(function () {
 
     Route::get('/',\App\Http\Livewire\Admin\Dashboard\DashboardIndex::class)
