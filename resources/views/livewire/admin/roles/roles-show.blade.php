@@ -5,17 +5,17 @@
                 wire:model.defer="openShowModel"
                 blur
                 hideClose
-
+                max-width="4xl"
         >
-            <div class="grid grid-cols-2 md:grid-cols-6 gap-4 px-4">
+            <div class="grid grid-cols-2 md:grid-cols-10 gap-4 px-4">
 
-                <div class="col-span-1 md:col-span-3">
+                <div class="col-span-1 md:col-span-2">
                     <x-item-with-label
                             :label="__('roles.name')"
                             :value="$item->name"
                     />
                 </div>
-                <div class="col-span-1 md:col-span-3">
+                <div class="col-span-1 md:col-span-2">
                     <x-item-with-label
                             :label="__('roles.key')"
                             :value="$item->key"
@@ -42,7 +42,7 @@
                             :value="$item->permissions_count"
                     />
                 </div>
-                <div class="col-span-1 md:col-span-6">
+                <div class="col-span-1 md:col-span-10">
                     <x-item-with-label :label="__('roles.color')">
                         <div class="flex flex-row gap-x-3">
                             <div class="w-1/2 text-center bg-secondary-50 p-2 rounded drop-shadow">
@@ -62,7 +62,7 @@
                         </div>
                     </x-item-with-label>
                 </div>
-                <div class="col-span-2 md:col-span-6">
+                <div class="col-span-2 md:col-span-10">
                     <x-item-with-label class="items-center" :label="__('roles.permissions')">
                         <div class="overflow-y-auto scroll-smooth h-48">
                             @forelse($item->permissions->unique('table_name')->pluck('table_name') as $key => $value)
@@ -86,7 +86,6 @@
 
                     </x-item-with-label>
                 </div>
-
                 <div class="col-span-1 md:col-span-3">
                     <x-item-with-label
                             :label="__('app.created_at')"

@@ -173,4 +173,5 @@
 
     <livewire:admin.permissions.permissions-create/>
     <livewire:admin.permissions.permissions-update/>
+    <livewire:admin.permissions.permissions-show/>
 </div>
