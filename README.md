@@ -1,11 +1,6 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="300" alt="Laravel Logo"></a></p>
-<p align="center">
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-</p>
 <p align="center"><a href="https://laravel-livewire.com" target="_blank"><img src="https://user-images.githubusercontent.com/6729097/213883363-2181ab3f-401b-444f-9381-59fc16f4cc0a.svg" width="300" alt="laravel livewire Logo"></a></p>
-
-<p align="center">
-<a href="https://packagist.org/packages/livewire/livewire"><img src="https://img.shields.io/packagist/v/livewire/livewire" alt="Latest Stable Version"></a>
+<p align="center"><a href="https://jetstream.laravel.com/" target="_blank"><img src="https://raw.githubusercontent.com/laravel/jetstream/2.x/art/logo.svg" width="300" alt="laravel livewire Logo"></a></p>
 
 
 
@@ -49,6 +44,7 @@ It is also integrated with Spatie Laravel permissions and Nprogress.
 
 * [Livewire](https://laravel-livewire.com/)
 * [WireUI](https://livewire-wireui.com/)
+* [Laravel Jetstream](https://jetstream.laravel.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
