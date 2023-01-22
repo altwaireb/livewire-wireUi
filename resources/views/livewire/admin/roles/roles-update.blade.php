@@ -5,10 +5,11 @@
                 wire:model.defer="openUpdateModel"
                 blur
                 hideClose
+                max-width="4xl"
         >
             <form wire:submit.prevent="edit" autocomplete="off">
-                <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
-                    <div class="col-span-1 md:col-span-3">
+                <div class="grid grid-cols-2 md:grid-cols-8 gap-4">
+                    <div class="col-span-1 md:col-span-2">
                         <x-input
                                 wire:model.defer="name"
                                 label="{{ __('roles.name') }}"
@@ -16,7 +17,7 @@
                                 type="text"
                         />
                     </div>
-                    <div class="col-span-1 md:col-span-3">
+                    <div class="col-span-1 md:col-span-2">
                         <x-input
                                 wire:model.defer="key"
                                 label="{{ __('roles.key') }}"
@@ -24,7 +25,7 @@
                                 type="text"
                         />
                     </div>
-                    <div class="col-span-1 md:col-span-3">
+                    <div class="col-span-1 md:col-span-2">
                         <x-item-with-label :label="__('roles.default')">
                             <div class="flex flex-row gap-x-4">
                                 <x-radio
@@ -42,7 +43,7 @@
                             </div>
                         </x-item-with-label>
                     </div>
-                    <div class="col-span-1 md:col-span-3">
+                    <div class="col-span-1 md:col-span-2">
 
                         <x-color-picker
                                 wire:model="color"
@@ -50,7 +51,7 @@
                                 placeholder="{{ __('roles.key') }}"
                         />
                     </div>
-                    <div class="col-span-1 md:col-span-6">
+                    <div class="col-span-2 md:col-span-8">
                         <x-item-with-label :label="__('app.preview')">
                             <div class="flex flex-row gap-x-3">
                                 <div class="w-1/2 text-center bg-secondary-50 p-2 rounded drop-shadow">
@@ -70,7 +71,7 @@
                             </div>
                         </x-item-with-label>
                     </div>
-                    <div class="col-span-1 md:col-span-6">
+                    <div class="col-span-2 md:col-span-8">
                         <x-item-with-label :label="__('roles.permissions')">
                             <div class="overflow-y-auto scroll-smooth h-48">
                                 @forelse($permissions->unique('table_name')->pluck('table_name') as $key => $value)
@@ -84,7 +85,7 @@
                                                         <x-checkbox
                                                                 wire:model.defer="permission"
                                                                 :value="$permission->id"
-                                                                :id="'permissionCreate.'.$permission->id"
+                                                                :id="'permissionUpdate.'.$permission->id"
                                                                 label="{{ !empty($value) ? __(''.$value.'.'.$permission->name.'')  :  __('app.'.$permission->name.'') }}"
                                                         />
                                                     @endif

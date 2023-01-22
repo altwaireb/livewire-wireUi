@@ -43,6 +43,7 @@ class RolesCreate extends Component
             'key' => [
                 'required',
                 'string',
+                'lowercase',
                 'min:2',
                 'max:50',
                 'regex:/^([a-z])+?(_)?([a-z])+$/i',

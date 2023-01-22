@@ -5,22 +5,24 @@ namespace App\Http\Livewire\Admin\Permissions;
 use App\Models\Permission;
 use Livewire\Component;
 use Illuminate\View\View;
-use WireUi\Traits\Actions;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use WireUi\Traits\Actions;
 
-
-class PermissionsCreate extends Component
+class PermissionsUpdate extends Component
 {
     use AuthorizesRequests;
     use Actions;
 
-    public bool $openCreateModel = false;
-
+    public bool $openUpdateModel = false;
+    //  Model
+    public $permission;
+    public $itemId;
+    // Attributes Model
     public ?string $name = null;
     public ?string $key = null;
     public ?string $table_name = null;
 
-    protected $listeners = ['openCreateModel'];
+    protected $listeners = ['openUpdateModel'];
 
     protected function rules()
     {
@@ -30,7 +32,7 @@ class PermissionsCreate extends Component
                 'string',
                 'min:2',
                 'max:50',
-                'unique:permissions'
+                'unique:permissions,name,'. $this->itemId
             ],
             'key' => [
                 'required',
@@ -38,7 +40,7 @@ class PermissionsCreate extends Component
                 'min:2',
                 'max:50',
                 'regex:/^([A-Za-z])+?(_)?([A-Za-z])+$/i',
-                'unique:permissions'
+                'unique:permissions,key,'. $this->itemId
             ],
             'table_name' => [
                 'nullable',
@@ -51,15 +53,22 @@ class PermissionsCreate extends Component
         ];
     }
 
-    public function openCreateModel()
+    public function openUpdateModel($itemId)
     {
-        $this->openCreateModel = true;
+        $this->itemId = $itemId;
+        $this->permission = Permission::findOrFail($this->itemId);
+        $this->authorize('update', $this->permission);
+        $this->openUpdateModel = true;
+
+        $this->name         = $this->permission->name;
+        $this->key          = $this->permission->key;
+        $this->table_name   = $this->permission->table_name;
     }
 
-    public function create()
+    public function edit()
     {
         $this->validate();
-        $this->authorize('create', Permission::class);
+        $this->authorize('update', $this->permission);
 
         $data = [
             'name' => $this->name,
@@ -67,25 +76,26 @@ class PermissionsCreate extends Component
             'table_name' => $this->table_name,
         ];
 
-        Permission::create($data);
+        $this->permission->update($data);
 
-        $this->closeCreateModel();
+        $this->closeUpdateModel();
         $this->notification()->success(
-            $title = __('app.create') . ' ' . __('permissions.permission'),
-            $description = __('permissions.created permission', ['name' => $data['name']])
+            $title = __('app.update') . ' ' . __('permissions.permission'),
+            $description = __('permissions.updated permission', ['name' => $data['name']])
         );
         $this->emit('refreshParent');
+
     }
 
-    public function closeCreateModel()
+    public function closeUpdateModel()
     {
-        $this->openCreateModel = false;
         $this->reset();
         $this->resetValidation();
         $this->resetErrorBag();
     }
+
     public function render(): View
     {
-        return view('livewire.admin.permissions.permissions-create');
+        return view('livewire.admin.permissions.permissions-update');
     }
 }

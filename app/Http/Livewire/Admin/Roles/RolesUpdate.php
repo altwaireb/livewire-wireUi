@@ -51,6 +51,7 @@ class RolesUpdate extends Component
             'key' => [
                 'required',
                 'string',
+                'lowercase',
                 'min:2',
                 'max:50',
                 'regex:/^([a-z])+?(_)?([a-z])+$/i',
@@ -59,7 +60,6 @@ class RolesUpdate extends Component
             'default' => [
                 'required',
                 'boolean',
-//                'unique:roles,default,NULL,id,default,1',
                 "unique:roles,default,".$this->itemId.",id,default,1"
             ],
             'color' => [

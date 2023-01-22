@@ -4,10 +4,11 @@
             wire:model.defer="openCreateModel"
             blur
             hideClose
+            max-width="sm"
     >
         <form wire:submit.prevent="create" autocomplete="off">
-            <div class="grid grid-cols-2 md:grid-cols-6 gap-4">
-                <div class="col-span-1 md:col-span-3">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
+                <div class="col-span-1 md:col-span-4">
                     <x-input
                             wire:model.defer="name"
                             label="{{ __('permissions.name') }}"
@@ -15,7 +16,7 @@
                             type="text"
                     />
                 </div>
-                <div class="col-span-1 md:col-span-3">
+                <div class="col-span-1 md:col-span-4">
                     <x-input
                             wire:model.defer="key"
                             label="{{ __('permissions.key') }}"
@@ -23,7 +24,7 @@
                             type="text"
                     />
                 </div>
-                <div class="col-span-1 md:col-span-3">
+                <div class="col-span-1 md:col-span-4">
                     <x-input
                             wire:model.defer="table_name"
                             label="{{ __('permissions.table_name') }}"
@@ -31,8 +32,6 @@
                             type="text"
                     />
                 </div>
-
-
             </div>
             <x-slot name="footer">
                 <div class="flex justify-end gap-x-4">
