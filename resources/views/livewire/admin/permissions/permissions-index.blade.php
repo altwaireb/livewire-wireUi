@@ -13,8 +13,8 @@
             @endcan
         </x-slot:action>
 
-        <div class="grid gap-x-3 mb-2 grid-cols-2 md:grid-cols-4 xl:grid-cols-8">
-            <div class="md:col-span-2 xl:col-span-3">
+        <div class="grid gap-x-3 mb-2 grid-cols-4 md:grid-cols-6 xl:grid-cols-8">
+            <div class="col-span-2 md:col-span-2 xl:col-span-3">
                 <x-input
                         wire:model="search"
                         :label="__('app.search')"
@@ -33,8 +33,7 @@
                     </x-slot>
                 </x-input>
             </div>
-
-            <div class="col-span-1 md:col-span-1 xl:col-span-2">
+            <div class="col-span-1 md:col-span-2 xl:col-span-2">
                 <x-select
                         :label="__('app.search by').' '.__('permissions.table_name')"
                         :placeholder="__('app.select').' '.__('permissions.table_name')"
@@ -49,8 +48,7 @@
                     @endforeach
                 </x-select>
             </div>
-
-            <div class="col-span-1 md:col-span-1 xl:col-start-8 xl:col-end-8 items-end justify-end">
+            <div class="col-span-1 md:col-span-1 md:col-start-6 md:col-end-6 xl:col-start-8 xl:col-end-8 items-end justify-end">
                 <x-select
                         label="{{ __('app.PerPage') }}"
                         :options="[10, 25, 50, 100]"
