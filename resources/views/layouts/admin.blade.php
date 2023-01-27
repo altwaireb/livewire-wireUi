@@ -41,7 +41,7 @@
         <header class="z-10 py-4 bg-white shadow-md dark:bg-secondary-800">
             @include('assets.admin.header.header')
         </header>
-        <main class="h-full min-w-0 max-w-full md:max-w-auto overflow-y-auto scroll-smooth">
+        <main class="h-full min-w-0 max-w-full md:max-w-auto overflow-y-auto scrollbar scrollbar-thumb-rounded-md scrollbar-thin scrollbar-thumb-primary-600 scrollbar-track-secondary-100 dark:scrollbar-track-secondary-800 scroll-smooth">
             <div class="container px-6 mx-auto grid">
                 @if (isset($header))
                     <!-- Page Heading -->

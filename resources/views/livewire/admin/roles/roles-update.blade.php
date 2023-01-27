@@ -73,9 +73,9 @@
                     </div>
                     <div class="col-span-2 md:col-span-8">
                         <x-item-with-label :label="__('roles.permissions')">
-                            <div class="overflow-y-auto scroll-smooth h-48">
+                            <div class="h-48 overflow-y-auto scrollbar scrollbar-thumb-rounded-md scrollbar-thin scrollbar-thumb-primary-600 scrollbar-track-secondary-100 dark:scrollbar-track-secondary-800 scroll-smooth">
                                 @forelse($permissions->unique('table_name')->pluck('table_name') as $key => $value)
-                                    <div class="pt-4">
+                                    <div class="pt-4 px-4">
                                         <x-item-with-label
                                                 label="{{ !empty($value) ? __(''.$value.'.'.$value.'')  : __('app.general') }}"
                                         >
