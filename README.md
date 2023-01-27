@@ -45,6 +45,7 @@ It is also integrated with Spatie Laravel permissions and Nprogress.
 * [Livewire](https://laravel-livewire.com/)
 * [WireUI](https://livewire-wireui.com/)
 * [Laravel Jetstream](https://jetstream.laravel.com/)
+* [Windmill Dashboard HTML](https://windmillui.com/dashboard-html)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -89,6 +90,32 @@ Follow these steps to try this out on your localhost.
    ```sh
    php artisan serve
    ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- HOW TO USE -->
+## How to use
+
+To create Component inside admin 
+   ```sh
+   php artisan make:livewire admin.model.ModelIndex
+   ```
+
+You can use Trait to get all functionality for Sorting and Searching and Pagination.
+
+   ```php
+
+use App\Traits\WithSorting;
+
+class FooIndex extends Component
+{
+    
+    use WithSorting;
+    
+    ...
+   ```
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
