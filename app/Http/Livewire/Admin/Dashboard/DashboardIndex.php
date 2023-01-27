@@ -2,20 +2,12 @@
 
 namespace App\Http\Livewire\Admin\Dashboard;
 
-use App\Models\Role;
 use App\Models\User;
-use App\View\Components\AdminLayout;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class DashboardIndex extends Component
 {
-    public $rolesData;
-    public array $rolesLabels = [];
-    public array $rolesValues = [];
-    public array $rolesColors = [];
-
 
     public function render()
     {
@@ -34,11 +26,11 @@ class DashboardIndex extends Component
                 ->with('role')->get(),
 
             'latest_activity_users' => User::whereNotNull('last_activity')
-                ->where('id','!=', auth()->id())
-                ->orderBy('last_activity','desc')->take(5)
-                ->select('id', 'name', 'username', 'role_id','last_activity')
+                ->where('id', '!=', auth()->id())
+                ->orderBy('last_activity', 'desc')->take(5)
+                ->select('id', 'name', 'username', 'role_id', 'last_activity')
                 ->with('role')->get(),
 
-        ])->layout(AdminLayout::class);
+        ])->layout('layouts.admin');
     }
 }
