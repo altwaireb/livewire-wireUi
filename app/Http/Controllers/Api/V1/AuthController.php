@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
-
 class AuthController extends Controller
 {
     use ApiResponses;
@@ -40,7 +39,8 @@ class AuthController extends Controller
 
     /**
      * Register.
-     * @param StoreUserRequest $request
+     *
+     * @param  StoreUserRequest  $request
      * @return JsonResponse
      */
     public function register(StoreUserRequest $request): JsonResponse
@@ -63,12 +63,12 @@ class AuthController extends Controller
 
         // Create Token by use field device_name
         $token = $user->createToken($request->device_name)->plainTextToken;
-        
+
         event(new Registered($user));
-        
+
         $data = [
             'data' => new AuthResource(User::with('role')->findOrFail($user->id)),
-            'token' => $token
+            'token' => $token,
         ];
 
         return $this->createdResponse($data);
@@ -76,8 +76,10 @@ class AuthController extends Controller
 
     /**
      * Login.
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return JsonResponse
+     *
      * @throws ValidationException
      */
     public function login(Request $request): JsonResponse
@@ -92,7 +94,7 @@ class AuthController extends Controller
         // Check email
         $user = User::where('email', $request->email)->with('role')->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => [__('auth.The provided credentials are incorrect')],
             ]);
@@ -108,7 +110,7 @@ class AuthController extends Controller
 
         // Update Last Activity in table user and add user id to Cache
         $expiresAt = Carbon::now()->addMinutes(4);
-        Cache::put('user-is-online' . $user->id, true, $expiresAt);
+        Cache::put('user-is-online'.$user->id, true, $expiresAt);
         $user->updateLastActivity();
 
         // Create Token by use field device_name
@@ -116,16 +118,16 @@ class AuthController extends Controller
 
         $response = [
             'user' => new AuthResource($user),
-            'token' => $token
+            'token' => $token,
         ];
 
         return $this->createdResponse($response);
-
     }
 
     /**
      * logout.
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return JsonResponse
      */
     public function logout(Request $request): JsonResponse
@@ -133,13 +135,14 @@ class AuthController extends Controller
         $request->user()->tokens()->delete();
 
         return $this->successResponse([
-            'message' => __('auth.user logged out')
+            'message' => __('auth.user logged out'),
         ]);
     }
 
     /**
      * Get authenticated user details use AuthResource.
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return JsonResponse
      */
     public function getUser(Request $request): JsonResponse
@@ -149,8 +152,10 @@ class AuthController extends Controller
 
     /**
      * Send Password Reset Link Email.
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return JsonResponse
+     *
      * @throws ValidationException
      */
     public function sendPasswordResetLinkEmail(Request $request): JsonResponse
@@ -165,15 +170,17 @@ class AuthController extends Controller
             return $this->successResponse(['message' => __($status)]);
         } else {
             throw ValidationException::withMessages([
-                'email' => __($status)
+                'email' => __($status),
             ]);
         }
     }
 
     /**
      * Reset Password.
-     * @param Request $request
+     *
+     * @param  Request  $request
      * @return JsonResponse
+     *
      * @throws ValidationException
      */
     public function resetPassword(Request $request): JsonResponse
@@ -186,9 +193,9 @@ class AuthController extends Controller
 
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) use ($request) {
+            function ($user, $password) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
+                    'password' => Hash::make($password),
                 ])->setRememberToken(Str::random(60));
 
                 $user->save();
@@ -201,9 +208,8 @@ class AuthController extends Controller
             return $this->successResponse(['message' => __($status)]);
         } else {
             throw ValidationException::withMessages([
-                'email' => __($status)
+                'email' => __($status),
             ]);
         }
     }
-
 }
