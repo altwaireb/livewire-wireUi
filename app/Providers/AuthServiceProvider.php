@@ -14,6 +14,8 @@ use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -41,6 +43,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('browse_admin', fn(User $user) => $user->hasPermission('browse_admin'));
         Gate::define('administrator', fn(User $user) => $user->hasPermission('administrator'));
         Gate::define('banned', fn(User $user) => $user->hasPermission('banned'));
+
+        VerifyEmail::toMailUsing(function ($notifiable, $url) {
+            return (new MailMessage)
+                ->subject('Verify Email Address')
+                ->line('Click the button below to verify your email address.')
+                ->action('Verify Email Address', $url);
+        });
 
     }
 }

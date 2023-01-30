@@ -41,7 +41,7 @@ class UsersCreate extends Component
                 'lowercase',
                 'min:5',
                 'max:25',
-                'regex:/^([a-z])+?(_)?([a-z0-9])+$/i',
+                'regex:/^([a-z])+?([a-z0-9])+?(_)?([a-z0-9])+$/i',
                 'unique:users'
             ],
             'name' => [

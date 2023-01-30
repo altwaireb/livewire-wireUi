@@ -66,8 +66,9 @@ class Role extends Model
     /**
      * Get Column ID Role if column default true
      * value is True
+     * @param string $column default id
      */
-    public static function getDefaultBy($column = 'id'){
+    public static function getDefaultBy(string $column = 'id'){
 
         return self::default() != null ? self::default()->$column : null;
     }

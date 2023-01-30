@@ -1,7 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Api\V1\AuthController;
+use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
+use Laravel\Fortify\Http\Controllers\VerifyEmailController;
+use \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::prefix('v1')->namespace('V1')->group(function () {
+
+    // Prefix Auth Route
+    Route::prefix('auth')->as('auth.')->group(function () {
+        // Guest
+        Route::middleware('guest')->group(function () {
+            // Register
+            Route::post('register', [AuthController::class, 'register'])->name('register');
+            // Login
+            Route::post('login', [AuthController::class, 'login'])->name('login');
+            // Send Password Reset Link Email
+            Route::post('/password/email', [AuthController::class, 'sendPasswordResetLinkEmail'])
+                ->middleware('throttle:5,1')->name('password.email');
+
+        });
+
+        Route::middleware(['auth:sanctum'])->group(function () {
+            // Logout
+            Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+            // User Info
+            Route::get('/user', [AuthController::class, 'getUser'])->name('user');
+            // Reset Password
+            Route::post('/password/reset', [AuthController::class, 'resetPassword'])->name('password.reset');
+
+        });
+
+    });
+
+    // All Route for User
+    Route::group(['middleware' => ['auth:sanctum', 'last_user_activity', 'check_banned']], function () {
+
+    });
+
 });

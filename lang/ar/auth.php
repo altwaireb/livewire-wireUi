@@ -6,5 +6,8 @@ return [
     'throttle' => 'عدد كبير جدا من محاولات الدخول. يرجى المحاولة مرة أخرى بعد :seconds ثانية.',
     'role_id_is_null' => 'عذراً ، لا يمكنك التسجيل , تواصل مع المسئول.',
     'Your account has been suspended' => 'عذراً ، تم تعليق حسابك ، يرجى التواصل مع المسئول.',
+    'The provided credentials are incorrect' => 'البيانات المدخلة غير صحيحة.',
+    'user logged out' => 'تم تسجيل الخروج بنجاح.'
+
 
 ];
