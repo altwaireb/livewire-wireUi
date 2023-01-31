@@ -69,8 +69,9 @@ class RolesUpdate extends Component
                 'unique:roles,color,'. $this->itemId
             ],
             'permission' => [
-                'required',
-                'array'
+                'nullable',
+                'array',
+                'exists:App\Models\Permission,id'
             ]
         ];
     }

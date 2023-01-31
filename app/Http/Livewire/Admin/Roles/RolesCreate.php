@@ -61,8 +61,9 @@ class RolesCreate extends Component
                 'unique:roles'
             ],
             'permission' => [
-                'required',
-                'array'
+                'nullable',
+                'array',
+                'exists:App\Models\Permission,id'
             ]
         ];
     }
