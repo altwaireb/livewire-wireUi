@@ -48,7 +48,7 @@ class PermissionsUpdate extends Component
                 'lowercase',
                 'min:2',
                 'max:50',
-                'regex:/(^[a-z])+?([a-zA-Z])+?([_])?([A-Za-z])+?([_])?([A-Za-z])+$/i',
+                'regex:/(^[a-z])+?([a-z])+?([_])?([a-z])+?([_])?([a-z])+$/i',
             ]
         ];
     }

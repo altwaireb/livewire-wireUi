@@ -42,8 +42,9 @@
                 >
                     @foreach($tableNames as $key => $value)
                         <x-select.option
-                                label="{{ !empty($value->table_name) ? __(''.$value->table_name.'.'.$value->table_name.'')  :  __('app.general') }}"
+                                label="{{ !empty($value->table_name) ? $value->table_name :  __('app.general') }}"
                                 value="{{ empty($value->table_name) ? 'NULL' : $value->table_name}}"
+                                description="{{ !empty($value->table_name) ? __(''.$value->table_name.'.'.$value->table_name.'')  :  __('app.general') }}"
                         />
                     @endforeach
                 </x-select>
