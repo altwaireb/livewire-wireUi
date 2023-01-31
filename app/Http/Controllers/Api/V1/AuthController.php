@@ -77,7 +77,7 @@ class AuthController extends Controller
             return $this->createdResponse($data);
 
         } catch (Exception $exception) {
-            return $this->errorResponse([], $exception->getMessage());
+            return $this->errorResponse([], $exception->getMessage(), $exception->getCode());
         }
 
     }
@@ -134,7 +134,7 @@ class AuthController extends Controller
             return $this->createdResponse($response);
 
         } catch (Exception $exception) {
-            return $this->errorResponse([], $exception->getMessage());
+            return $this->errorResponse([], $exception->getMessage(), $exception->getCode());
         }
 
     }
@@ -155,7 +155,7 @@ class AuthController extends Controller
             ]);
 
         } catch (Exception $exception) {
-            return $this->errorResponse([], $exception->getMessage());
+            return $this->errorResponse([], $exception->getMessage(), $exception->getCode());
         }
 
     }
@@ -172,7 +172,7 @@ class AuthController extends Controller
             return $this->successResponse(new AuthResource(User::with('role')->findOrFail($request->user()->id)));
 
         } catch (Exception $exception) {
-            return $this->errorResponse([], $exception->getMessage());
+            return $this->errorResponse([], $exception->getMessage(), $exception->getCode());
         }
     }
 
@@ -202,7 +202,7 @@ class AuthController extends Controller
             }
 
         } catch (Exception $exception) {
-            return $this->errorResponse([], $exception->getMessage());
+            return $this->errorResponse([], $exception->getMessage(), $exception->getCode());
         }
 
     }
@@ -247,7 +247,7 @@ class AuthController extends Controller
             }
 
         } catch (Exception $exception) {
-            return $this->errorResponse([], $exception->getMessage());
+            return $this->errorResponse([], $exception->getMessage(), $exception->getCode());
         }
 
     }
