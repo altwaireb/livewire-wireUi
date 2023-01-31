@@ -64,7 +64,7 @@ class AuthController extends Controller
         // Create Token by use field device_name
         $token = $user->createToken($request->device_name)->plainTextToken;
 
-        event(new Registered($user));
+//        event(new Registered($user));
 
         $data = [
             'data' => new AuthResource(User::with('role')->findOrFail($user->id)),
