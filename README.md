@@ -33,10 +33,12 @@
 
 ## About The Project
 
-This project is created to learn and practice livewire; understand why it is created; and explore the power of LIVEWIRE!
+This project is created to learn and practice livewire; understand why it is created; and explore the power of LIVEWIRE with WireUI.
 
-This project consists of Livewire table with sorting, search, perPage, and bulk delete functionalities.
-It is also integrated with Spatie Laravel permissions and Nprogress.
+This project consists of Livewire table with sorting, search, and perPage functionalities.
+</br>
+Also, Roles and Permissions have been added with Policies.
+
 
 Support Dark Mode :
 <p align="center"><a href="https://user-images.githubusercontent.com/6729097/215651085-279dc2fe-207d-4460-a190-886f1fba9ed5.png" target="_blank"><img src="https://user-images.githubusercontent.com/6729097/215651085-279dc2fe-207d-4460-a190-886f1fba9ed5.png" width="600" alt="dark mode"></a></p>
