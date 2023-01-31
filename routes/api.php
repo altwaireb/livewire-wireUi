@@ -3,9 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\V1\AuthController;
-use Laravel\Fortify\Http\Controllers\EmailVerificationPromptController;
-use Laravel\Fortify\Http\Controllers\VerifyEmailController;
-use \Laravel\Fortify\Http\Controllers\EmailVerificationNotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +32,7 @@ Route::prefix('v1')->namespace('V1')->group(function () {
 
         });
 
-        Route::middleware(['auth:sanctum'])->group(function () {
+        Route::middleware(['auth:sanctum', 'last_user_activity', 'check_banned'])->group(function () {
             // Logout
             Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
             // User Info
