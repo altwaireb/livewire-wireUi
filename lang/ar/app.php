@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'Dashboard' => 'الرئيسية',
     'id' => 'المعرف',
     'actions' => 'الإجراءات',
     'create' => 'إضافة',

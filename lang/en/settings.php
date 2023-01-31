@@ -29,5 +29,6 @@ return [
     'forceDelete description' => 'This action causes the Setting :name to be permanently deleted. Do you want to delete it?!',
     'delete result' => 'This action will result in permanent deletion of Setting',
     'forceDeleted setting' => 'The Setting has been permanently deleted successfully',
+    'usage_help' => 'You can get the value of any setting anywhere in your site by using',
 
 ];
