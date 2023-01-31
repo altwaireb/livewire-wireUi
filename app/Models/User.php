@@ -94,10 +94,10 @@ class User extends Authenticatable
         });
     }
 
-    public function scopeUpdateLastActivity()
+    public function scopeUpdateLastActivity(): void
     {
         $this->timestamps = false;
-         return $this->update([
+        $this->update([
             'last_activity'=> now(),
         ]);
     }
