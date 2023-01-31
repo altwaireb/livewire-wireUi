@@ -39,7 +39,7 @@ class PermissionsUpdate extends Component
                 'string',
                 'min:2',
                 'max:50',
-                'regex:/^([A-Za-z])+?(_)?([A-Za-z])+$/i',
+                'regex:/(^[a-z])+?([a-zA-Z])+?([_])?([A-Za-z])+?([_])?([A-Za-z])+$/i',
                 'unique:permissions,key,'. $this->itemId
             ],
             'table_name' => [
@@ -48,7 +48,7 @@ class PermissionsUpdate extends Component
                 'lowercase',
                 'min:2',
                 'max:50',
-                'regex:/^([a-z])+?(_)?([a-z])+$/i',
+                'regex:/(^[a-z])+?([a-zA-Z])+?([_])?([A-Za-z])+?([_])?([A-Za-z])+$/i',
             ]
         ];
     }
