@@ -33,7 +33,7 @@
                     </x-slot>
                 </x-input>
             </div>
-            <div class="col-span-2 md:col-span-2 xl:col-span-1">
+            <div class="col-span-2 md:col-span-2 xl:col-span-2">
                 <x-select
                         :label="__('app.search by').' '.__('users.role')"
                         :placeholder="__('app.select').' '.__('users.role')"
