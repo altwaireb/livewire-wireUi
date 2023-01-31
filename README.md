@@ -30,6 +30,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 This project is created to learn and practice livewire; understand why it is created; and explore the power of LIVEWIRE!
@@ -37,8 +38,15 @@ This project is created to learn and practice livewire; understand why it is cre
 This project consists of Livewire table with sorting, search, perPage, and bulk delete functionalities.
 It is also integrated with Spatie Laravel permissions and Nprogress.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+Support Dark Mode :
+<p align="center"><a href="https://user-images.githubusercontent.com/6729097/215651085-279dc2fe-207d-4460-a190-886f1fba9ed5.png" target="_blank"><img src="https://user-images.githubusercontent.com/6729097/215651085-279dc2fe-207d-4460-a190-886f1fba9ed5.png" width="600" alt="dark mode"></a></p>
+Left-to-Right Language Support :
+<p align="center"><a href="https://user-images.githubusercontent.com/6729097/215652586-53c9c25a-d0fb-4590-89d2-e4b00e777ed4.png" target="_blank"><img src="https://user-images.githubusercontent.com/6729097/215652586-53c9c25a-d0fb-4590-89d2-e4b00e777ed4.png" width="600" alt="dir 'ltr'"></a></p>
+Right-to-Left Language Support :
+<p align="center"><a href="https://user-images.githubusercontent.com/6729097/215653138-38555282-9f09-4c5a-ab7f-0c7f83da51be.png" target="_blank"><img src="https://user-images.githubusercontent.com/6729097/215653138-38555282-9f09-4c5a-ab7f-0c7f83da51be.png" width="600" alt="dir 'rtl'"></a></p>
 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
@@ -50,6 +58,7 @@ It is also integrated with Spatie Laravel permissions and Nprogress.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 Follow these steps to try this out on your localhost.
@@ -95,9 +104,11 @@ Follow these steps to try this out on your localhost.
 
 
 <!-- HOW TO USE -->
+
 ## How to use
 
-To create Component inside admin 
+To create Component inside admin
+
    ```sh
    php artisan make:livewire admin.model.ModelIndex
    ```
@@ -116,11 +127,35 @@ class FooIndex extends Component
     ...
    ```
 
+The default sort is the id you can change to another column e.g:
+
+   ```php
+
+use App\Traits\WithSorting;
+
+class FooIndex extends Component
+{
+    
+    use WithSorting;
+    
+    public function mount()
+    {
+        $this->sortBy = 'name';
+        // same with sort Direction    
+        $this->sortDirection = 'asc';          
+        // same with Per Page    
+        $this->perPage = 25;    
+    }
+    
+    ...
+   ```
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- CREDENTIALS EXAMPLES -->
+
 ## Credentials
 
 Admin <br/>
