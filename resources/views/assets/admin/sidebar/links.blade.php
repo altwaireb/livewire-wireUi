@@ -1,5 +1,5 @@
 <x-list-sidebar
-        :title="__('app.dashboard')"
+        :title="__('dashboard.index')"
         routeName="admin.index"
         icon="home"
 />

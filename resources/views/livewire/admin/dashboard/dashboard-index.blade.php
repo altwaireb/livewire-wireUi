@@ -1,5 +1,5 @@
 <div class="px-5 pt-10">
-    @section('page-title', __('app.dashboard'))
+    @section('page-title', __('dashboard.index'))
 
     @can('administrator')
         <div class="grid grid-cols-2 gap-6 mb-8 md:grid-cols-2 lg:grid-cols-3">

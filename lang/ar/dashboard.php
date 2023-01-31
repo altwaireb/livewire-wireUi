@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'index' => 'لوحة التحكم',
     'users_count' => 'عدد الأعضاء',
     'users_trashed_count' => 'الأعضاء المحذوفين',
     'registeredThisDay' => 'الأعضاء المسجلين اليوم',

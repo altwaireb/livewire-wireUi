@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'dashboard' => 'Dashboard',
     'id' => 'Id',
     'actions' => 'Actions',
     'create' => 'Create',

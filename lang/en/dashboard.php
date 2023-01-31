@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'index' => 'Dashboard',
     'users_count' => 'Users Count',
     'users_trashed_count' => 'Users Trashed Count',
     'registeredThisDay' => 'Registered This Day',
